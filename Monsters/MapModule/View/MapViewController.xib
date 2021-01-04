@@ -11,8 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="Monsters" customModuleProvider="target">
             <connections>
+                <outlet property="centerMapOnUserButton" destination="KhK-aV-Gje" id="pda-Pk-XQa"/>
                 <outlet property="mapView" destination="vMw-1U-wbh" id="SVl-vQ-mcB"/>
+                <outlet property="scaleButtonsStackView" destination="4Mx-sC-DKo" id="O0W-xK-t35"/>
                 <outlet property="view" destination="iN0-l3-epB" id="LKM-UL-TIC"/>
+                <outlet property="zoomInButton" destination="bwc-i5-sef" id="N7u-Ii-Mlh"/>
+                <outlet property="zoomOutButton" destination="fhI-Yv-MuF" id="iTJ-rD-9y3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,19 +27,73 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vMw-1U-wbh">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </mapView>
+                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Mx-sC-DKo">
+                    <rect key="frame" x="366" y="408" width="40" height="80"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwc-i5-sef">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <color key="backgroundColor" white="0.84999999999999998" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="U0o-Ba-h79"/>
+                                <constraint firstAttribute="width" secondItem="bwc-i5-sef" secondAttribute="height" multiplier="1:1" id="Y46-Vp-wUG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="+">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="zoomInButtonTapped:" destination="-1" eventType="touchUpInside" id="Ppi-zg-Agw"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhI-Yv-MuF">
+                            <rect key="frame" x="0.0" y="40" width="40" height="40"/>
+                            <color key="backgroundColor" white="0.84999999999999998" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="3ts-qM-XkU"/>
+                                <constraint firstAttribute="width" secondItem="fhI-Yv-MuF" secondAttribute="height" multiplier="1:1" id="UUH-Qq-ced"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <state key="normal" title="−">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="zoomOutButtonTapped:" destination="-1" eventType="touchUpInside" id="7Td-nd-ei3"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhK-aV-Gje">
+                    <rect key="frame" x="356" y="788" width="50" height="50"/>
+                    <color key="backgroundColor" white="0.84999999999999998" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="KhK-aV-Gje" secondAttribute="height" id="A1r-R9-x2K"/>
+                        <constraint firstAttribute="width" constant="50" id="K7p-et-fR6"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="location.fill" catalog="system"/>
+                    <connections>
+                        <action selector="centerMapOnUserButtonTapped:" destination="-1" eventType="touchUpInside" id="gvG-y9-bm0"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="KhK-aV-Gje" secondAttribute="bottom" constant="24" id="A2W-eL-K28"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vMw-1U-wbh" secondAttribute="trailing" id="XBH-Pa-sVu"/>
                 <constraint firstAttribute="bottom" secondItem="vMw-1U-wbh" secondAttribute="bottom" id="cuX-ZF-8Y9"/>
                 <constraint firstItem="vMw-1U-wbh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jbK-pq-103"/>
                 <constraint firstItem="vMw-1U-wbh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lKl-dK-bP2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4Mx-sC-DKo" secondAttribute="trailing" constant="8" id="nTy-Y0-38m"/>
+                <constraint firstItem="4Mx-sC-DKo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="oEo-cd-PRc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KhK-aV-Gje" secondAttribute="trailing" constant="8" id="yPl-gu-6wZ"/>
             </constraints>
             <point key="canvasLocation" x="97" y="110"/>
         </view>
     </objects>
     <resources>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

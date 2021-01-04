@@ -7,17 +7,18 @@
 
 import XCTest
 import CoreLocation
+import MapKit
 @testable import Monsters
 
 class MockMapView: MapViewProtocol {
+    var scale = 0.0
     
-    var location: CLLocationCoordinate2D?
-    var message: String?
-    
-    func showLocation(location: CLLocationCoordinate2D) {
-        self.location = location
+    func show(region: MKCoordinateRegion) {
+        
     }
     
+    var message: String?
+            
     func showLocationSettingsAlert(title: String, message: String) {
         self.message = message
     }
@@ -52,9 +53,9 @@ class MapPresenterTests: XCTestCase {
     func testGetLocation() {
         let location = CLLocationCoordinate2D(latitude: 1, longitude: 2)
         presenter.getLocation(location)
-        XCTAssertNotNil(view.location)
-        XCTAssertEqual(view.location?.latitude, location.latitude)
-        XCTAssertEqual(view.location?.longitude, location.longitude)
+        XCTAssertNotNil(presenter.userLocation)
+        XCTAssertEqual(presenter.userLocation?.latitude, location.latitude)
+        XCTAssertEqual(presenter.userLocation?.longitude, location.longitude)
     }
     
     func testcantUpdateLocation() {
@@ -73,4 +74,12 @@ class MapPresenterTests: XCTestCase {
         XCTAssertEqual(view.message, LocationAuthStatus.granted.status)
     }
     
+    func testMakeRegion() {
+        var region: MKCoordinateRegion?
+        presenter.userLocation = CLLocationCoordinate2D(latitude: 1, longitude: 1)
+        region = presenter.makeRegion(scale: 0.25)
+        XCTAssertNotNil(region)
+        XCTAssertEqual(region!.span.latitudeDelta, 0.25)
+        XCTAssertEqual(region!.span.longitudeDelta, 0.25)
+      }
 }

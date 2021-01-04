@@ -9,18 +9,26 @@ import UIKit
 import MapKit
 
 protocol MapViewProtocol: class {
-    func showLocation(location: CLLocationCoordinate2D)
+    var scale: Double { get set }
+    func show(region: MKCoordinateRegion)
     func showLocationSettingsAlert(title: String, message: String)
 }
 
 class MapViewController: UIViewController {
     
     var presenter: MapPresenterProtocol!
+    var scale = 0.0
     
     //MARK: - IBOutlets
+    
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var scaleButtonsStackView: UIStackView!
+    @IBOutlet weak var zoomInButton: UIButton!
+    @IBOutlet weak var zoomOutButton: UIButton!
+    @IBOutlet weak var centerMapOnUserButton: UIButton!
     
     //MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
@@ -32,21 +40,47 @@ class MapViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scaleButtonsStackView.layer.cornerRadius = 5
+        centerMapOnUserButton.layer.cornerRadius = centerMapOnUserButton.frame.width/2
+    }
+    
+    //MARK: - IBActions
+    
+    @IBAction func zoomInButtonTapped(_ sender: UIButton) {
+        
+        if scale > 0.25 {
+            scale -= 0.25
+            guard let region = presenter.makeRegion(scale: scale) else { return }
+            mapView.setRegion(region, animated: true)
+        } else {
+            scale = 0.0
+            guard let location = presenter.userLocation else { return }
+            presenter.getLocation(location)
+        }
+    }
+    
+    @IBAction func zoomOutButtonTapped(_ sender: UIButton) {
+        
+        scale += 0.25
+        guard let region = presenter.makeRegion(scale: scale) else { return }
+        mapView.setRegion(region, animated: true)
+    }
+    
+    @IBAction func centerMapOnUserButtonTapped(_ sender: UIButton) {
+        guard let location = presenter.userLocation else { return }
+        presenter.getLocation(location)
+    }
+    
 }
 
 //MARK: - MapViewProtocol
 
 extension MapViewController: MapViewProtocol {
  
-    func showLocation(location: CLLocationCoordinate2D) {
+    func show(region: MKCoordinateRegion) {
         guard let mapView = mapView else { return }
-        
-        let regionRadius: CLLocationDistance = 1000
-        
-        let region = MKCoordinateRegion(center: location,
-                                        latitudinalMeters: regionRadius,
-                                        longitudinalMeters: regionRadius)
-        
         mapView.setRegion(region, animated: true)
     }
     

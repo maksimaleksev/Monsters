@@ -39,8 +39,7 @@ extension LocationManager: CLLocationManagerDelegate {
         switch status {
         
         case .notDetermined:
-            cllocationManager.stopUpdatingLocation()
-            mapViewPresenter?.cantUpdateLocation(.notDetermined)
+            break
         case .restricted:
             cllocationManager.stopUpdatingLocation()
             mapViewPresenter?.cantUpdateLocation(.denied)

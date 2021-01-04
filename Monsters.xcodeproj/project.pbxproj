@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B06767825A3418200A9D6C6 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B06767725A3418200A9D6C6 /* MapViewControllerTests.swift */; };
+		7B06767D25A352B600A9D6C6 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B06767C25A352B600A9D6C6 /* UIButton+Extension.swift */; };
 		7B3E572125A0E9E4000F7772 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E572025A0E9E4000F7772 /* AppDelegate.swift */; };
 		7B3E572525A0E9E4000F7772 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E572425A0E9E4000F7772 /* MapViewController.swift */; };
 		7B3E572A25A0E9E5000F7772 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B3E572925A0E9E5000F7772 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		7B06767725A3418200A9D6C6 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
+		7B06767C25A352B600A9D6C6 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		7B3E571D25A0E9E4000F7772 /* Monsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B3E572025A0E9E4000F7772 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B3E572425A0E9E4000F7772 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B06768125A352C000A9D6C6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7B06767C25A352B600A9D6C6 /* UIButton+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7B3E571425A0E9E4000F7772 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 				7B3E579225A100C0000F7772 /* AssemblyBuilder.swift */,
 				7B3E576A25A0FAEC000F7772 /* MapModule */,
 				7B3E578A25A0FEF3000F7772 /* Services */,
+				7B06768125A352C000A9D6C6 /* Extensions */,
 				7B3E576225A0EF3B000F7772 /* LaunchScreen.storyboard */,
 				7B3E572925A0E9E5000F7772 /* Assets.xcassets */,
 				7B3E572E25A0E9E5000F7772 /* Info.plist */,
@@ -316,6 +327,7 @@
 				7B3E579325A100C0000F7772 /* AssemblyBuilder.swift in Sources */,
 				7BAC3FA825A20F2100623263 /* LocationAuthStatus.swift in Sources */,
 				7B3E577825A0FC90000F7772 /* MapPresenter.swift in Sources */,
+				7B06767D25A352B600A9D6C6 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

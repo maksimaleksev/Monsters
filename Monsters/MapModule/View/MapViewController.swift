@@ -31,21 +31,24 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self
-        mapView.showsUserLocation = true
+        setupMapView()
+        setupAppDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        setupButtonsAppereance()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scaleButtonsStackView.layer.cornerRadius = 5
         centerMapOnUserButton.layer.cornerRadius = centerMapOnUserButton.frame.width/2
+        centerMapOnUserButton.imageEdgeInsets = .init(top: 11, left: 11, bottom: 11, right: 11)
     }
     
+        
     //MARK: - IBActions
     
     @IBAction func zoomInButtonTapped(_ sender: UIButton) {
@@ -56,8 +59,7 @@ class MapViewController: UIViewController {
             mapView.setRegion(region, animated: true)
         } else {
             scale = 0.0
-            guard let location = presenter.userLocation else { return }
-            presenter.getLocation(location)
+            presenter.showRegion()
         }
     }
     
@@ -69,10 +71,42 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func centerMapOnUserButtonTapped(_ sender: UIButton) {
-        guard let location = presenter.userLocation else { return }
-        presenter.getLocation(location)
+        presenter.showRegion()
     }
     
+    //MARK: - Class methods
+    
+    //Set colors for screen mode
+    private func setupButtonsAppereance() {
+        
+        if #available(iOS 12.0, *) {
+            switch self.traitCollection.userInterfaceStyle {
+                
+            case .light:
+                zoomInButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
+                zoomOutButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
+                centerMapOnUserButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
+            case .dark:
+                zoomInButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.1540525854, green: 0.1540525854, blue: 0.1540525854, alpha: 0.75))
+                zoomOutButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.150000006, green: 0.150000006, blue: 0.150000006, alpha: 0.75))
+                centerMapOnUserButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.150000006, green: 0.150000006, blue: 0.150000006, alpha: 0.75))
+            default:
+                break
+            }
+        }
+    }
+    
+    //Setup appdelegate
+    private func setupAppDelegate() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.delegate = self
+    }
+    
+    //MapView Setup
+    private func setupMapView() {
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+    }
 }
 
 //MARK: - MapViewProtocol
@@ -108,5 +142,18 @@ extension MapViewController: MapViewProtocol {
 
 //MARK: - MKMapViewDelegate
 extension MapViewController: MKMapViewDelegate {
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        presenter.mapViewIsLoaded = true
+    }
+}
+
+//MARK: - AppDelegate protocol
+
+extension MapViewController: AppDelegateProtocol {
+    
+    func appDidBecomeActive() {
+        setupButtonsAppereance()
+    }
     
 }

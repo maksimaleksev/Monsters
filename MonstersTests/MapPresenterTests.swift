@@ -51,8 +51,10 @@ class MapPresenterTests: XCTestCase {
     }
     
     func testGetLocation() {
+        presenter.userLocation = CLLocationCoordinate2D(latitude: 2, longitude: 1)
         let location = CLLocationCoordinate2D(latitude: 1, longitude: 2)
         presenter.getLocation(location)
+        presenter.isInitialSetup = false
         XCTAssertNotNil(presenter.userLocation)
         XCTAssertEqual(presenter.userLocation?.latitude, location.latitude)
         XCTAssertEqual(presenter.userLocation?.longitude, location.longitude)
@@ -81,5 +83,10 @@ class MapPresenterTests: XCTestCase {
         XCTAssertNotNil(region)
         XCTAssertEqual(region!.span.latitudeDelta, 0.25)
         XCTAssertEqual(region!.span.longitudeDelta, 0.25)
+        
+        presenter.userLocation = nil
+        region = presenter.makeRegion(scale: 0.25)
+        XCTAssertNil(region)
+
       }
 }

@@ -11,6 +11,9 @@ import MapKit
 @testable import Monsters
 
 class MockPresenter: MapPresenterProtocol {
+    
+    var mapViewIsLoaded: Bool = true
+       
     var view: MapViewProtocol?
     
     var userLocation: CLLocationCoordinate2D?
@@ -33,6 +36,11 @@ class MockPresenter: MapPresenterProtocol {
     func makeRegion(scale: Double) -> MKCoordinateRegion? {
         return nil
     }
+    
+    func showRegion() {
+        
+    }
+
 }
 
 class MapViewControllerTests: XCTestCase {
@@ -65,5 +73,17 @@ class MapViewControllerTests: XCTestCase {
         mapVC.zoomInButtonTapped(UIButton())
         XCTAssertEqual(mapVC.scale, 0.0)
         
+    }
+    
+    func testShowRegion() {
+        let centerRegion = CLLocationCoordinate2D(latitude: 21.10000000000001, longitude: 21.100000000000023)
+        let region = MKCoordinateRegion(center: centerRegion,
+                                        latitudinalMeters: 100,
+                                        longitudinalMeters: 100)
+        mapVC.loadView()
+        mapVC.show(region: region)
+        
+        XCTAssertEqual(mapVC.mapView.region.center.latitude, centerRegion.latitude)
+        XCTAssertEqual(mapVC.mapView.region.center.longitude, centerRegion.longitude)
     }
 }

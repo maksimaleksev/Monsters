@@ -12,12 +12,16 @@
 		7B3E572125A0E9E4000F7772 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E572025A0E9E4000F7772 /* AppDelegate.swift */; };
 		7B3E572525A0E9E4000F7772 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E572425A0E9E4000F7772 /* MapViewController.swift */; };
 		7B3E572A25A0E9E5000F7772 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B3E572925A0E9E5000F7772 /* Assets.xcassets */; };
-		7B3E574325A0E9E5000F7772 /* MonstersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E574225A0E9E5000F7772 /* MonstersUITests.swift */; };
 		7B3E576325A0EF3B000F7772 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B3E576225A0EF3B000F7772 /* LaunchScreen.storyboard */; };
 		7B3E577325A0FB1C000F7772 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3E577225A0FB1C000F7772 /* MapViewController.xib */; };
 		7B3E577825A0FC90000F7772 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E577725A0FC90000F7772 /* MapPresenter.swift */; };
 		7B3E577D25A0FE86000F7772 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E577C25A0FE86000F7772 /* LocationManager.swift */; };
 		7B3E579325A100C0000F7772 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E579225A100C0000F7772 /* AssemblyBuilder.swift */; };
+		7B8EA6BB25A390D6005994D4 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6BA25A390D6005994D4 /* Monster.swift */; };
+		7B8EA6C425A393D7005994D4 /* MonsterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6C325A393D7005994D4 /* MonsterBuilder.swift */; };
+		7B8EA6C925A39925005994D4 /* MonsterBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6C825A39925005994D4 /* MonsterBuilderTests.swift */; };
+		7B8EA6CE25A39EF0005994D4 /* MonsterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6CD25A39EF0005994D4 /* MonsterTests.swift */; };
+		7B8EA6EB25A3A484005994D4 /* MonstersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6EA25A3A483005994D4 /* MonstersUITests.swift */; };
 		7BAC3FA825A20F2100623263 /* LocationAuthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC3FA725A20F2100623263 /* LocationAuthStatus.swift */; };
 		7BAC3FAE25A2242200623263 /* MapPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC3FAD25A2242200623263 /* MapPresenterTests.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +46,7 @@
 /* Begin PBXFileReference section */
 		7B06767725A3418200A9D6C6 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
 		7B06767C25A352B600A9D6C6 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		7B26A94B25A3A4BB00A3FB55 /* MonstersUITests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MonstersUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		7B3E571D25A0E9E4000F7772 /* Monsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B3E572025A0E9E4000F7772 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B3E572425A0E9E4000F7772 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -50,13 +55,17 @@
 		7B3E573325A0E9E5000F7772 /* MonstersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonstersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B3E573925A0E9E5000F7772 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B3E573E25A0E9E5000F7772 /* MonstersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonstersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B3E574225A0E9E5000F7772 /* MonstersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonstersUITests.swift; sourceTree = "<group>"; };
 		7B3E574425A0E9E5000F7772 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B3E576225A0EF3B000F7772 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B3E577225A0FB1C000F7772 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		7B3E577725A0FC90000F7772 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		7B3E577C25A0FE86000F7772 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7B3E579225A100C0000F7772 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
+		7B8EA6BA25A390D6005994D4 /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		7B8EA6C325A393D7005994D4 /* MonsterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterBuilder.swift; sourceTree = "<group>"; };
+		7B8EA6C825A39925005994D4 /* MonsterBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterBuilderTests.swift; sourceTree = "<group>"; };
+		7B8EA6CD25A39EF0005994D4 /* MonsterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTests.swift; sourceTree = "<group>"; };
+		7B8EA6EA25A3A483005994D4 /* MonstersUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonstersUITests.swift; sourceTree = "<group>"; };
 		7BAC3FA725A20F2100623263 /* LocationAuthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAuthStatus.swift; sourceTree = "<group>"; };
 		7BAC3FAD25A2242200623263 /* MapPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +103,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		7B26A94F25A3A51000A3FB55 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				7B3E579225A100C0000F7772 /* AssemblyBuilder.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
 		7B3E571425A0E9E4000F7772 = {
 			isa = PBXGroup;
 			children = (
@@ -118,7 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				7B3E572025A0E9E4000F7772 /* AppDelegate.swift */,
-				7B3E579225A100C0000F7772 /* AssemblyBuilder.swift */,
+				7B26A94F25A3A51000A3FB55 /* Assembly */,
 				7B3E576A25A0FAEC000F7772 /* MapModule */,
 				7B3E578A25A0FEF3000F7772 /* Services */,
 				7B06768125A352C000A9D6C6 /* Extensions */,
@@ -134,6 +151,8 @@
 			children = (
 				7BAC3FAD25A2242200623263 /* MapPresenterTests.swift */,
 				7B06767725A3418200A9D6C6 /* MapViewControllerTests.swift */,
+				7B8EA6C825A39925005994D4 /* MonsterBuilderTests.swift */,
+				7B8EA6CD25A39EF0005994D4 /* MonsterTests.swift */,
 				7B3E573925A0E9E5000F7772 /* Info.plist */,
 			);
 			path = MonstersTests;
@@ -142,8 +161,9 @@
 		7B3E574125A0E9E5000F7772 /* MonstersUITests */ = {
 			isa = PBXGroup;
 			children = (
-				7B3E574225A0E9E5000F7772 /* MonstersUITests.swift */,
+				7B8EA6EA25A3A483005994D4 /* MonstersUITests.swift */,
 				7B3E574425A0E9E5000F7772 /* Info.plist */,
+				7B26A94B25A3A4BB00A3FB55 /* MonstersUITests-Bridging-Header.h */,
 			);
 			path = MonstersUITests;
 			sourceTree = "<group>";
@@ -153,6 +173,7 @@
 			children = (
 				7B3E576E25A0FAFB000F7772 /* View */,
 				7B3E578E25A0FF0D000F7772 /* Presenter */,
+				7B8EA6BF25A39174005994D4 /* Model */,
 			);
 			path = MapModule;
 			sourceTree = "<group>";
@@ -180,6 +201,15 @@
 				7B3E577725A0FC90000F7772 /* MapPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		7B8EA6BF25A39174005994D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B8EA6BA25A390D6005994D4 /* Monster.swift */,
+				7B8EA6C325A393D7005994D4 /* MonsterBuilder.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7BAC3FA325A1FC2400623263 /* LocationService */ = {
@@ -265,6 +295,7 @@
 					};
 					7B3E573D25A0E9E5000F7772 = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
 						TestTargetID = 7B3E571C25A0E9E4000F7772;
 					};
 				};
@@ -321,6 +352,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8EA6BB25A390D6005994D4 /* Monster.swift in Sources */,
+				7B8EA6C425A393D7005994D4 /* MonsterBuilder.swift in Sources */,
 				7B3E577D25A0FE86000F7772 /* LocationManager.swift in Sources */,
 				7B3E572525A0E9E4000F7772 /* MapViewController.swift in Sources */,
 				7B3E572125A0E9E4000F7772 /* AppDelegate.swift in Sources */,
@@ -335,7 +368,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8EA6CE25A39EF0005994D4 /* MonsterTests.swift in Sources */,
 				7BAC3FAE25A2242200623263 /* MapPresenterTests.swift in Sources */,
+				7B8EA6C925A39925005994D4 /* MonsterBuilderTests.swift in Sources */,
 				7B06767825A3418200A9D6C6 /* MapViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,7 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B3E574325A0E9E5000F7772 /* MonstersUITests.swift in Sources */,
+				7B8EA6EB25A3A484005994D4 /* MonstersUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +601,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 98379XS7GB;
 				INFOPLIST_FILE = MonstersUITests/Info.plist;
@@ -576,6 +612,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.maksim-alekseev.MonstersUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MonstersUITests/MonstersUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Monsters;
@@ -586,6 +624,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 98379XS7GB;
 				INFOPLIST_FILE = MonstersUITests/Info.plist;
@@ -596,6 +635,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.maksim-alekseev.MonstersUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MonstersUITests/MonstersUITests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Monsters;

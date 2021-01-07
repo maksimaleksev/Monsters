@@ -11,7 +11,8 @@ import MapKit
 @testable import Monsters
 
 class MockPresenter: MapPresenterProtocol {
-    
+    var timer: Timer?
+               
     var mapViewIsLoaded: Bool = true
        
     var view: MapViewProtocol?
@@ -33,13 +34,32 @@ class MockPresenter: MapPresenterProtocol {
         
     }
     
-    func makeRegion(scale: Double) -> MKCoordinateRegion? {
-        return nil
-    }
-    
     func showRegion() {
         
     }
+    
+    func makeRegion(center coordinate: CLLocationCoordinate2D, scale: Double) -> MKCoordinateRegion {
+        return MKCoordinateRegion()
+    }
+    
+    func makeRegion(regionRadius: CLLocationDistance, for location: CLLocationCoordinate2D) -> MKCoordinateRegion {
+       return MKCoordinateRegion()
+    }
+    
+    func makeAnnotations() -> [MonsterAnnotation] {
+            return []
+    }
+    
+    func startTimer() {
+        
+    }
+    
+    func stopTimer() {
+        
+    }
+    
+
+
 
 }
 
@@ -52,7 +72,7 @@ class MapViewControllerTests: XCTestCase {
         mapVC = MapViewController()
         presenter = MockPresenter(view: mapVC, locationManager: LocationManager())
         mapVC.presenter = presenter
-    }
+        }
 
     override func tearDownWithError() throws {
         mapVC = nil
@@ -60,11 +80,13 @@ class MapViewControllerTests: XCTestCase {
     }
     
     func testZoomOut() {
+        mapVC.loadView()
         mapVC.zoomOutButtonTapped(UIButton())
         XCTAssertEqual(mapVC.scale, 0.025)
     }
     
     func testZoomIn() {
+        mapVC.loadView()
         mapVC.scale = 1
         mapVC.zoomInButtonTapped(UIButton())
         XCTAssertEqual(mapVC.scale, 0.975)

@@ -45,12 +45,25 @@ class MapPresenterTests: XCTestCase {
         view = MockMapView()
         locationManager = MockLocationManager()
         presenter = MapPresenter(view: view, locationManager: locationManager)
+        presenter.monsters = [ Monster(name: "Foo",
+                                       imageName: "foo",
+                                       level: 1,
+                                       coordinate: CLLocationCoordinate2D(latitude: 1, longitude: 1)),
+                               Monster(name: "Bar",
+                                       imageName: "bar",
+                                       level: 2,
+                                       coordinate: CLLocationCoordinate2D(latitude: 2, longitude: 2)),
+                               Monster(name: "Foo", imageName: "foo", level: 3,
+                                       coordinate: CLLocationCoordinate2D(latitude: 1.0001, longitude: 1.0001))
+        ]
+        presenter.userLocation = CLLocationCoordinate2D(latitude: 1, longitude: 1)
         
     }
     
     override func tearDownWithError() throws {
         view = nil
         locationManager = nil
+        presenter.stopTimer()
         presenter = nil
     }
     
@@ -82,15 +95,30 @@ class MapPresenterTests: XCTestCase {
     
     func testMakeRegion() {
         var region: MKCoordinateRegion?
-        presenter.userLocation = CLLocationCoordinate2D(latitude: 1, longitude: 1)
-        region = presenter.makeRegion(scale: 0.25)
+
+        region = presenter.makeRegion(center: presenter.userLocation!, scale: 0.25)
         XCTAssertNotNil(region)
         XCTAssertEqual(region!.span.latitudeDelta, 0.25)
         XCTAssertEqual(region!.span.longitudeDelta, 0.25)
         
-        presenter.userLocation = nil
-        region = presenter.makeRegion(scale: 0.25)
-        XCTAssertNil(region)
-
-      }
+        }
+    
+    func testMakeAnnotations() {
+        
+        let annotations = presenter.makeAnnotations()
+        
+        XCTAssertEqual(annotations.count, 2)
+    }
+    
+    func testStartTimer() {
+     
+        presenter.startTimer()
+        XCTAssertNotNil(presenter.timer)
+    }
+    
+    func testStopTimer() {
+        presenter.startTimer()
+        presenter.stopTimer()
+        XCTAssertNil(presenter.timer)
+    }
 }

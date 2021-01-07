@@ -16,23 +16,27 @@ protocol MapPresenterProtocol: class {
     var userLocation: CLLocationCoordinate2D? { get set }
     var locationManager: LocationManagerProtocol? { get set }
     var mapViewIsLoaded: Bool { get set }
+    var timer: Timer? { get set }
     
     init(view: MapViewProtocol, locationManager: LocationManagerProtocol)
     
     func getLocation(_ location: CLLocationCoordinate2D)
     func cantUpdateLocation(_ reason: LocationAuthStatus)
-    func makeRegion(scale: Double) -> MKCoordinateRegion?
+    func makeRegion(center coordinate: CLLocationCoordinate2D, scale: Double) -> MKCoordinateRegion
+    func makeRegion(regionRadius: CLLocationDistance, for location: CLLocationCoordinate2D) -> MKCoordinateRegion
     func showRegion()
+    func makeAnnotations() -> [MonsterAnnotation]
+    func startTimer()
+    func stopTimer()
 }
 
 class MapPresenter: MapPresenterProtocol {
     
-    weak var view: MapViewProtocol?
-    var locationManager: LocationManagerProtocol?
-    var userLocation: CLLocationCoordinate2D?
-    var monsters: [Monster]!
-    
-
+    internal weak var view: MapViewProtocol?
+    internal var locationManager: LocationManagerProtocol?
+    internal var userLocation: CLLocationCoordinate2D?
+    internal var monsters: [Monster]!
+    internal var timer: Timer?
     
     //Tells when map on view is loaded
     var mapViewIsLoaded: Bool = false
@@ -56,13 +60,17 @@ class MapPresenter: MapPresenterProtocol {
             isInitialSetup = false
             showRegion()
             monsters = MonsterFarm.shared.makeMonsters(from: userLocation!)
-            let annotations = monsters.map { return MonsterAnnotation(monster: $0) }
+            let annotations = makeAnnotations()
             view?.setAnnotations(annotations)
+            startTimer()
         } else if isUserMoved(location){
             self.userLocation = location
+            
             showRegion()
-//            let annotations = monsters.map { return MonsterAnnotation(monster: $0) }
-//            view?.setAnnotations(annotations)
+            setNewMonsterLocations()
+            
+            let annotations = makeAnnotations()
+            view?.setAnnotations(annotations)
         }
     }
     
@@ -72,23 +80,22 @@ class MapPresenter: MapPresenterProtocol {
     }
     
     //Make region
-    private func makeRegion(regionRadius: CLLocationDistance, for location: CLLocationCoordinate2D) -> MKCoordinateRegion {
+    func makeRegion(regionRadius: CLLocationDistance, for location: CLLocationCoordinate2D) -> MKCoordinateRegion {
         return MKCoordinateRegion(center: location,
                                   latitudinalMeters: regionRadius,
                                   longitudinalMeters: regionRadius)
     }
     
     //Make region with span
-    func makeRegion(scale: Double) -> MKCoordinateRegion? {
-        guard let userLocation = self.userLocation else { return nil }
-        
+    func makeRegion(center coordinate: CLLocationCoordinate2D, scale: Double) -> MKCoordinateRegion {
         let span = MKCoordinateSpan(latitudeDelta: scale, longitudeDelta: scale)
-        return MKCoordinateRegion(center: userLocation, span: span)
+        return MKCoordinateRegion(center: coordinate, span: span)
     }
     
+    //Shows mapView region with center in user location
     func showRegion() {
         guard let location = self.userLocation else { return }
-        let region = makeRegion(regionRadius: 1000, for: location)
+        let region = makeRegion(regionRadius: 300, for: location)
         view?.show(region: region)
     }
     
@@ -101,7 +108,52 @@ class MapPresenter: MapPresenterProtocol {
         return self.accuracyRegionRadius <= coveredDistance
     }
     
+    //Making annotation from monster model
     private func makeAnnotation(from monster: Monster) -> MonsterAnnotation {
         return MonsterAnnotation(monster: monster)
+    }
+    
+    //Making mapViewAnnotations in 300 meters from user location
+    func makeAnnotations() -> [MonsterAnnotation] {
+        
+        return monsters.filter {[weak self] monster in
+            guard let userLocation = self?.userLocation else { return false}
+            return monster.getDistance(from: userLocation) <= 300 }
+            .map { return MonsterAnnotation(monster: $0) }
+        
+    }
+    
+    //Create chance to change location for monster
+    private func setNewMonsterLocations() {
+        
+        monsters.forEach {[weak self] monster in
+            guard let location = self?.userLocation else { return }
+            let chance = Int.random(in: 1...5)
+            if chance == 5 {
+                let coordinate = MonsterFarm.shared.makeCoordinate(from: location)
+                monster.setNewLocation(coordinate)
+            }
+        }
+    }
+    
+    func startTimer() {
+        
+        if timer == nil {
+            timer = Timer.scheduledTimer(withTimeInterval: 300, repeats: true, block: { [weak self] _ in
+                guard let self = self else { return }
+                
+                self.setNewMonsterLocations()
+                
+                let annotations = self.makeAnnotations()
+                self.view?.setAnnotations(annotations)
+            })
+            
+            timer?.tolerance = 0.1
+        }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 }

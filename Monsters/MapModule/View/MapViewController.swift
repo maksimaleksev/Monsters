@@ -17,8 +17,8 @@ protocol MapViewProtocol: class {
 
 class MapViewController: UIViewController {
     
-    var presenter: MapPresenterProtocol!
-    var scale = 0.0
+    internal var presenter: MapPresenterProtocol!
+    internal var scale = 0.0
     
     //MARK: - IBOutlets
     
@@ -49,6 +49,14 @@ class MapViewController: UIViewController {
         centerMapOnUserButton.imageEdgeInsets = .init(top: 11, left: 11, bottom: 11, right: 11)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        presenter.stopTimer()
+    }
+    
+    deinit {
+        print("MapViewController deinit")
+    }
     
     //MARK: - IBActions
     
@@ -56,18 +64,19 @@ class MapViewController: UIViewController {
         
         if scale > 0.03 {
             scale -= 0.025
-            guard let region = presenter.makeRegion(scale: scale) else { return }
+            let region = presenter.makeRegion(center: mapView.centerCoordinate, scale: scale)
             mapView.setRegion(region, animated: true)
         } else {
             scale = 0.0
-            presenter.showRegion()
+            let region = presenter.makeRegion(regionRadius: 300, for: mapView.centerCoordinate)
+            mapView.setRegion(region, animated: true)
         }
     }
     
     @IBAction func zoomOutButtonTapped(_ sender: UIButton) {
         
         scale += 0.025
-        guard let region = presenter.makeRegion(scale: scale) else { return }
+        let region = presenter.makeRegion(center: mapView.centerCoordinate, scale: scale)
         mapView.setRegion(region, animated: true)
     }
     
@@ -109,6 +118,14 @@ class MapViewController: UIViewController {
         mapView.delegate = self
         mapView.showsUserLocation = true
     }
+    
+    //Removing old annotations
+    private func removeAppleMapOverlays() {
+        let overlays = self.mapView.overlays
+        self.mapView.removeOverlays(overlays)
+        let annotations = self.mapView.annotations.filter { $0 !== self.mapView.userLocation }
+        self.mapView.removeAnnotations(annotations)
+    }
 }
 
 //MARK: - MapViewProtocol
@@ -116,6 +133,7 @@ class MapViewController: UIViewController {
 extension MapViewController: MapViewProtocol {
     
     func setAnnotations(_ annotations: [MonsterAnnotation]) {
+        removeAppleMapOverlays()
         mapView.addAnnotations(annotations)
     }
     
@@ -151,7 +169,7 @@ extension MapViewController: MapViewProtocol {
 //MARK: - MKMapViewDelegate
 extension MapViewController: MKMapViewDelegate {
     
-   
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? MonsterAnnotation else { return nil }
         
@@ -159,14 +177,13 @@ extension MapViewController: MKMapViewDelegate {
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) ?? MKAnnotationView()
         annotationView.image = UIImage(named: annotation.imageName)
         return annotationView
-        
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? MonsterAnnotation else { return }
-        print(annotation.title)
+        print(annotation.title!)
     }
-
+    
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         presenter.mapViewIsLoaded = true

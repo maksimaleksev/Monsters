@@ -11,6 +11,10 @@ import MapKit
 @testable import Monsters
 
 class MockMapView: MapViewProtocol {
+    func setAnnotations(_ annotations: [MonsterAnnotation]) {
+        
+    }
+    
     var scale = 0.0
     
     func show(region: MKCoordinateRegion) {

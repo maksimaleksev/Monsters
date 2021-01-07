@@ -8,11 +8,12 @@
 import Foundation
 import CoreLocation
 
-protocol MonsterBuilderProtocol {
+/*protocol MonsterBuilderProtocol {
    
     func set()
     func setMonsterName(_ name: String)
     func setMonsterImageName(_ imageName: String)
+    func setMonsterLevel(_ level: Int)
     func setMonsterLocation(_ location: CLLocationCoordinate2D)
     func makeMonster() -> Monster?
 }
@@ -44,10 +45,14 @@ class MonsterBuilder: MonsterBuilderProtocol {
         self.monster?.location = location
     }
     
+    func setMonsterLevel(_ level: Int) {
+        self.monster?.level = level
+    }
+    
     func makeMonster() -> Monster? {
         guard  let monster = self.monster else { return nil }
         reset()
         return monster
     }
             
-}
+}*/

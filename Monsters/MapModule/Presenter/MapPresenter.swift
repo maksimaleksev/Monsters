@@ -30,6 +30,9 @@ class MapPresenter: MapPresenterProtocol {
     weak var view: MapViewProtocol?
     var locationManager: LocationManagerProtocol?
     var userLocation: CLLocationCoordinate2D?
+    var monsters: [Monster]!
+    
+
     
     //Tells when map on view is loaded
     var mapViewIsLoaded: Bool = false
@@ -47,15 +50,19 @@ class MapPresenter: MapPresenterProtocol {
     
     //Get location
     func getLocation(_ location: CLLocationCoordinate2D) {
-                        
+        
         if mapViewIsLoaded && isInitialSetup {
             self.userLocation = location
             isInitialSetup = false
             showRegion()
-            
+            monsters = MonsterFarm.shared.makeMonsters(from: userLocation!)
+            let annotations = monsters.map { return MonsterAnnotation(monster: $0) }
+            view?.setAnnotations(annotations)
         } else if isUserMoved(location){
             self.userLocation = location
             showRegion()
+//            let annotations = monsters.map { return MonsterAnnotation(monster: $0) }
+//            view?.setAnnotations(annotations)
         }
     }
     
@@ -92,5 +99,9 @@ class MapPresenter: MapPresenterProtocol {
         let newLocation = CLLocation(latitude: newLocationCoordinates.latitude, longitude: newLocationCoordinates.longitude)
         let coveredDistance = newLocation.distance(from: location)
         return self.accuracyRegionRadius <= coveredDistance
+    }
+    
+    private func makeAnnotation(from monster: Monster) -> MonsterAnnotation {
+        return MonsterAnnotation(monster: monster)
     }
 }

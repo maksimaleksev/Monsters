@@ -61,17 +61,17 @@ class MapViewControllerTests: XCTestCase {
     
     func testZoomOut() {
         mapVC.zoomOutButtonTapped(UIButton())
-        XCTAssertEqual(mapVC.scale, 0.25)
+        XCTAssertEqual(mapVC.scale, 0.025)
     }
     
     func testZoomIn() {
         mapVC.scale = 1
         mapVC.zoomInButtonTapped(UIButton())
-        XCTAssertEqual(mapVC.scale, 0.75)
+        XCTAssertEqual(mapVC.scale, 0.975)
         
         mapVC.scale = 0.1
         mapVC.zoomInButtonTapped(UIButton())
-        XCTAssertEqual(mapVC.scale, 0.0)
+        XCTAssertEqual(mapVC.scale, 0.07500000000000001)
         
     }
     

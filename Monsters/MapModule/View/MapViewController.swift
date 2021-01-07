@@ -12,6 +12,7 @@ protocol MapViewProtocol: class {
     var scale: Double { get set }
     func show(region: MKCoordinateRegion)
     func showLocationSettingsAlert(title: String, message: String)
+    func setAnnotations(_ annotations: [MonsterAnnotation])
 }
 
 class MapViewController: UIViewController {
@@ -48,13 +49,13 @@ class MapViewController: UIViewController {
         centerMapOnUserButton.imageEdgeInsets = .init(top: 11, left: 11, bottom: 11, right: 11)
     }
     
-        
+    
     //MARK: - IBActions
     
     @IBAction func zoomInButtonTapped(_ sender: UIButton) {
         
-        if scale > 0.25 {
-            scale -= 0.25
+        if scale > 0.03 {
+            scale -= 0.025
             guard let region = presenter.makeRegion(scale: scale) else { return }
             mapView.setRegion(region, animated: true)
         } else {
@@ -65,12 +66,13 @@ class MapViewController: UIViewController {
     
     @IBAction func zoomOutButtonTapped(_ sender: UIButton) {
         
-        scale += 0.25
+        scale += 0.025
         guard let region = presenter.makeRegion(scale: scale) else { return }
         mapView.setRegion(region, animated: true)
     }
     
     @IBAction func centerMapOnUserButtonTapped(_ sender: UIButton) {
+        scale = 0.0
         presenter.showRegion()
     }
     
@@ -81,7 +83,7 @@ class MapViewController: UIViewController {
         
         if #available(iOS 12.0, *) {
             switch self.traitCollection.userInterfaceStyle {
-                
+            
             case .light:
                 zoomInButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
                 zoomOutButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
@@ -112,7 +114,13 @@ class MapViewController: UIViewController {
 //MARK: - MapViewProtocol
 
 extension MapViewController: MapViewProtocol {
- 
+    
+    func setAnnotations(_ annotations: [MonsterAnnotation]) {
+        mapView.addAnnotations(annotations)
+    }
+    
+    
+    
     func show(region: MKCoordinateRegion) {
         guard let mapView = mapView else { return }
         mapView.setRegion(region, animated: true)
@@ -121,27 +129,44 @@ extension MapViewController: MapViewProtocol {
     func showLocationSettingsAlert(title: String, message: String) {
         
         let alertController = UIAlertController (title: title, message: message, preferredStyle: .alert)
-
-            let settingsAction = UIAlertAction(title: "Настройки", style: .default) { (_) -> Void in
-                
-                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
-
-                if UIApplication.shared.canOpenURL(settingsUrl) {
-                    UIApplication.shared.open(settingsUrl, completionHandler: nil)
-                }
-            }
-            alertController.addAction(settingsAction)
-            let cancelAction = UIAlertAction(title: "Отмена", style: .default, handler: nil)
-            alertController.addAction(cancelAction)
-
-            present(alertController, animated: true, completion: nil)
-    }
-
         
+        let settingsAction = UIAlertAction(title: "Настройки", style: .default) { (_) -> Void in
+            
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+            
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: nil)
+            }
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
 }
 
 //MARK: - MKMapViewDelegate
 extension MapViewController: MKMapViewDelegate {
+    
+   
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? MonsterAnnotation else { return nil }
+        
+        let identifier = "MonsterAnnotation"
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) ?? MKAnnotationView()
+        annotationView.image = UIImage(named: annotation.imageName)
+        return annotationView
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotation = view.annotation as? MonsterAnnotation else { return }
+        print(annotation.title)
+    }
+
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         presenter.mapViewIsLoaded = true

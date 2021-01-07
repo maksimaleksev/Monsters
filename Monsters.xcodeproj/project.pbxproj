@@ -17,9 +17,10 @@
 		7B3E577825A0FC90000F7772 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E577725A0FC90000F7772 /* MapPresenter.swift */; };
 		7B3E577D25A0FE86000F7772 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E577C25A0FE86000F7772 /* LocationManager.swift */; };
 		7B3E579325A100C0000F7772 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E579225A100C0000F7772 /* AssemblyBuilder.swift */; };
+		7B5DF92925A71AA800F3276A /* MonsterFarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5DF92825A71AA800F3276A /* MonsterFarmTests.swift */; };
+		7B830B1B25A4B9FF00410AAF /* MonsterFarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B830B1A25A4B9FF00410AAF /* MonsterFarm.swift */; };
+		7B830B2525A4D00000410AAF /* MonsterAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B830B2425A4D00000410AAF /* MonsterAnnotation.swift */; };
 		7B8EA6BB25A390D6005994D4 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6BA25A390D6005994D4 /* Monster.swift */; };
-		7B8EA6C425A393D7005994D4 /* MonsterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6C325A393D7005994D4 /* MonsterBuilder.swift */; };
-		7B8EA6C925A39925005994D4 /* MonsterBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6C825A39925005994D4 /* MonsterBuilderTests.swift */; };
 		7B8EA6CE25A39EF0005994D4 /* MonsterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6CD25A39EF0005994D4 /* MonsterTests.swift */; };
 		7B8EA6EB25A3A484005994D4 /* MonstersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6EA25A3A483005994D4 /* MonstersUITests.swift */; };
 		7BAC3FA825A20F2100623263 /* LocationAuthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC3FA725A20F2100623263 /* LocationAuthStatus.swift */; };
@@ -61,9 +62,10 @@
 		7B3E577725A0FC90000F7772 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		7B3E577C25A0FE86000F7772 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7B3E579225A100C0000F7772 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
+		7B5DF92825A71AA800F3276A /* MonsterFarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterFarmTests.swift; sourceTree = "<group>"; };
+		7B830B1A25A4B9FF00410AAF /* MonsterFarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterFarm.swift; sourceTree = "<group>"; };
+		7B830B2425A4D00000410AAF /* MonsterAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterAnnotation.swift; sourceTree = "<group>"; };
 		7B8EA6BA25A390D6005994D4 /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
-		7B8EA6C325A393D7005994D4 /* MonsterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterBuilder.swift; sourceTree = "<group>"; };
-		7B8EA6C825A39925005994D4 /* MonsterBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterBuilderTests.swift; sourceTree = "<group>"; };
 		7B8EA6CD25A39EF0005994D4 /* MonsterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTests.swift; sourceTree = "<group>"; };
 		7B8EA6EA25A3A483005994D4 /* MonstersUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonstersUITests.swift; sourceTree = "<group>"; };
 		7BAC3FA725A20F2100623263 /* LocationAuthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAuthStatus.swift; sourceTree = "<group>"; };
@@ -151,7 +153,7 @@
 			children = (
 				7BAC3FAD25A2242200623263 /* MapPresenterTests.swift */,
 				7B06767725A3418200A9D6C6 /* MapViewControllerTests.swift */,
-				7B8EA6C825A39925005994D4 /* MonsterBuilderTests.swift */,
+				7B5DF92825A71AA800F3276A /* MonsterFarmTests.swift */,
 				7B8EA6CD25A39EF0005994D4 /* MonsterTests.swift */,
 				7B3E573925A0E9E5000F7772 /* Info.plist */,
 			);
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				7B3E572425A0E9E4000F7772 /* MapViewController.swift */,
+				7B830B2425A4D00000410AAF /* MonsterAnnotation.swift */,
 				7B3E577225A0FB1C000F7772 /* MapViewController.xib */,
 			);
 			path = View;
@@ -207,7 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				7B8EA6BA25A390D6005994D4 /* Monster.swift */,
-				7B8EA6C325A393D7005994D4 /* MonsterBuilder.swift */,
+				7B830B1A25A4B9FF00410AAF /* MonsterFarm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -353,11 +356,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B8EA6BB25A390D6005994D4 /* Monster.swift in Sources */,
-				7B8EA6C425A393D7005994D4 /* MonsterBuilder.swift in Sources */,
 				7B3E577D25A0FE86000F7772 /* LocationManager.swift in Sources */,
 				7B3E572525A0E9E4000F7772 /* MapViewController.swift in Sources */,
 				7B3E572125A0E9E4000F7772 /* AppDelegate.swift in Sources */,
+				7B830B2525A4D00000410AAF /* MonsterAnnotation.swift in Sources */,
 				7B3E579325A100C0000F7772 /* AssemblyBuilder.swift in Sources */,
+				7B830B1B25A4B9FF00410AAF /* MonsterFarm.swift in Sources */,
 				7BAC3FA825A20F2100623263 /* LocationAuthStatus.swift in Sources */,
 				7B3E577825A0FC90000F7772 /* MapPresenter.swift in Sources */,
 				7B06767D25A352B600A9D6C6 /* UIButton+Extension.swift in Sources */,
@@ -370,8 +374,8 @@
 			files = (
 				7B8EA6CE25A39EF0005994D4 /* MonsterTests.swift in Sources */,
 				7BAC3FAE25A2242200623263 /* MapPresenterTests.swift in Sources */,
-				7B8EA6C925A39925005994D4 /* MonsterBuilderTests.swift in Sources */,
 				7B06767825A3418200A9D6C6 /* MapViewControllerTests.swift in Sources */,
+				7B5DF92925A71AA800F3276A /* MonsterFarmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,14 +10,15 @@ import CoreLocation
 
 struct Monster {
     
-    let id = UUID().uuidString
-    var name: String?
-    var imageName: String?
-    var location: CLLocationCoordinate2D?
+    let name: String
+    let imageName: String
+    var level: Int
+    var coordinate: CLLocationCoordinate2D
     
-    mutating func setNewLocation(_ newLocation: CLLocationCoordinate2D) {
-        self.location = newLocation
+    mutating func setNewLocation(_ newCoordinate: CLLocationCoordinate2D) {
+        self.coordinate = newCoordinate
     }
+
 }
 
 

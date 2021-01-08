@@ -15,10 +15,11 @@ protocol MapPresenterProtocol: class {
     var view: MapViewProtocol? { get set }
     var userLocation: CLLocationCoordinate2D? { get set }
     var locationManager: LocationManagerProtocol? { get set }
+    var router: RouterProtocol? { get set }
     var mapViewIsLoaded: Bool { get set }
     var timer: Timer? { get set }
     
-    init(view: MapViewProtocol, locationManager: LocationManagerProtocol)
+    init(view: MapViewProtocol, locationManager: LocationManagerProtocol, router: RouterProtocol)
     
     func getLocation(_ location: CLLocationCoordinate2D)
     func cantUpdateLocation(_ reason: LocationAuthStatus)
@@ -28,14 +29,16 @@ protocol MapPresenterProtocol: class {
     func makeAnnotations() -> [MonsterAnnotation]
     func startTimer()
     func stopTimer()
+    func showMonster(_ monster: Monster)
 }
 
 class MapPresenter: MapPresenterProtocol {
-    
+            
     internal weak var view: MapViewProtocol?
     internal var locationManager: LocationManagerProtocol?
     internal var userLocation: CLLocationCoordinate2D?
     internal var monsters: [Monster]!
+    internal var router: RouterProtocol?
     internal var timer: Timer?
     
     //Tells when map on view is loaded
@@ -47,9 +50,10 @@ class MapPresenter: MapPresenterProtocol {
     //Accuracy region need to determine when user moves
     let accuracyRegionRadius: Double =  100
     
-    required init(view: MapViewProtocol, locationManager: LocationManagerProtocol) {
+    required init(view: MapViewProtocol, locationManager: LocationManagerProtocol, router: RouterProtocol) {
         self.view = view
         self.locationManager = locationManager
+        self.router = router
     }
     
     //Get location
@@ -156,4 +160,9 @@ class MapPresenter: MapPresenterProtocol {
         timer?.invalidate()
         timer = nil
     }
+    
+    func showMonster(_ monster: Monster) {
+        router?.showMonsterModule(monster)
+    }
+
 }

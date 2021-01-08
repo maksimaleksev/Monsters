@@ -181,7 +181,7 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? MonsterAnnotation else { return }
-        print(annotation.title!)
+        presenter.showMonster(annotation.monster)
     }
     
     

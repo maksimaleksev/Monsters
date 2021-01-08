@@ -9,16 +9,16 @@ import UIKit
 import MapKit
 
 class MonsterAnnotation: NSObject, MKAnnotation {
-                
-    var coordinate: CLLocationCoordinate2D    
-    var title: String?
-    var imageName: String
-    var monsterLevel: Int
     
+    var monster: Monster
+    var coordinate: CLLocationCoordinate2D
+    var imageName: String
+    var title: String?
+        
     init(monster: Monster) {
         self.coordinate = monster.coordinate
         self.title = monster.name
         self.imageName = monster.imageName
-        self.monsterLevel = monster.level
+        self.monster = monster
     }
 }

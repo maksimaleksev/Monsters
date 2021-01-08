@@ -44,7 +44,7 @@ class MapPresenterTests: XCTestCase {
         
         view = MockMapView()
         locationManager = MockLocationManager()
-        presenter = MapPresenter(view: view, locationManager: locationManager)
+        presenter = MapPresenter(view: view, locationManager: locationManager, router: Router(navigationController: UINavigationController(), assemblyBuilder: AssemblyBuilder()))
         presenter.monsters = [ Monster(name: "Foo",
                                        imageName: "foo",
                                        level: 1,

@@ -11,6 +11,9 @@ import MapKit
 @testable import Monsters
 
 class MockPresenter: MapPresenterProtocol {
+    var router: RouterProtocol?
+    
+        
     var timer: Timer?
                
     var mapViewIsLoaded: Bool = true
@@ -21,9 +24,14 @@ class MockPresenter: MapPresenterProtocol {
     
     var locationManager: LocationManagerProtocol?
     
-    required init(view: MapViewProtocol, locationManager: LocationManagerProtocol) {
+    required init(view: MapViewProtocol, locationManager: LocationManagerProtocol, router: RouterProtocol) {
         self.view = view
         self.locationManager = locationManager
+        self.router = router
+    }
+    
+    func showMonster(_ monster: Monster) {
+        
     }
     
     func getLocation(_ location: CLLocationCoordinate2D) {
@@ -70,7 +78,7 @@ class MapViewControllerTests: XCTestCase {
     
     override func setUpWithError() throws {
         mapVC = MapViewController()
-        presenter = MockPresenter(view: mapVC, locationManager: LocationManager())
+        presenter = MockPresenter(view: mapVC, locationManager: LocationManager(), router: Router(navigationController: UINavigationController(), assemblyBuilder: AssemblyBuilder()))
         mapVC.presenter = presenter
         }
 

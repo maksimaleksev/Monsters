@@ -10,7 +10,7 @@ import UIKit
 protocol AssemblyBuilderProtocol: class {
 
     func createMapModule(router: RouterProtocol) -> MapViewController
-    func createMonsterModule(monster: Monster, router: RouterProtocol) -> MonsterViewController
+    func createMonsterModule(monster: MonsterModelProtocol, router: RouterProtocol) -> MonsterViewController
 }
 
 class AssemblyBuilder: AssemblyBuilderProtocol {
@@ -24,7 +24,7 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
         return view
     }
     
-    func createMonsterModule(monster: Monster, router: RouterProtocol) -> MonsterViewController {
+    func createMonsterModule(monster: MonsterModelProtocol, router: RouterProtocol) -> MonsterViewController {
         
         let view = MonsterViewController()
         let presenter = MonsterPresenter(view: view, monster: monster, router: router)

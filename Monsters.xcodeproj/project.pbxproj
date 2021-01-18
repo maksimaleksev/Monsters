@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B06767825A3418200A9D6C6 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B06767725A3418200A9D6C6 /* MapViewControllerTests.swift */; };
 		7B06767D25A352B600A9D6C6 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B06767C25A352B600A9D6C6 /* UIButton+Extension.swift */; };
+		7B3801CC25B46A7000065DEB /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B3801CB25B46A7000065DEB /* art.scnassets */; };
 		7B3E572125A0E9E4000F7772 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E572025A0E9E4000F7772 /* AppDelegate.swift */; };
 		7B3E572525A0E9E4000F7772 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E572425A0E9E4000F7772 /* MapViewController.swift */; };
 		7B3E572A25A0E9E5000F7772 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B3E572925A0E9E5000F7772 /* Assets.xcassets */; };
@@ -17,17 +18,20 @@
 		7B3E577825A0FC90000F7772 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E577725A0FC90000F7772 /* MapPresenter.swift */; };
 		7B3E577D25A0FE86000F7772 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E577C25A0FE86000F7772 /* LocationManager.swift */; };
 		7B3E579325A100C0000F7772 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E579225A100C0000F7772 /* AssemblyBuilder.swift */; };
+		7B45A77125B4BD2E00560492 /* ModelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A77025B4BD2E00560492 /* ModelScene.swift */; };
+		7B45A77625B4BD6400560492 /* BitMaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A77525B4BD6400560492 /* BitMaskCategory.swift */; };
 		7B5DF92925A71AA800F3276A /* MonsterFarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5DF92825A71AA800F3276A /* MonsterFarmTests.swift */; };
+		7B70B68425B47E2A002C7990 /* MonsterPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B70B68325B47E2A002C7990 /* MonsterPresenterTests.swift */; };
 		7B830B1B25A4B9FF00410AAF /* MonsterFarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B830B1A25A4B9FF00410AAF /* MonsterFarm.swift */; };
 		7B830B2525A4D00000410AAF /* MonsterAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B830B2425A4D00000410AAF /* MonsterAnnotation.swift */; };
 		7B8EA6BB25A390D6005994D4 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6BA25A390D6005994D4 /* Monster.swift */; };
 		7B8EA6CE25A39EF0005994D4 /* MonsterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6CD25A39EF0005994D4 /* MonsterTests.swift */; };
 		7B8EA6EB25A3A484005994D4 /* MonstersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EA6EA25A3A483005994D4 /* MonstersUITests.swift */; };
-		7BA5776625A8854A00FF3DA2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA5776525A8854A00FF3DA2 /* Router.swift */; };
-		7BA5777025A88BD700FF3DA2 /* MonsterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA5776E25A88BD700FF3DA2 /* MonsterViewController.swift */; };
-		7BA5777125A88BD700FF3DA2 /* MonsterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA5776F25A88BD700FF3DA2 /* MonsterViewController.xib */; };
-		7BA5777E25A88C9800FF3DA2 /* MonsterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA5777D25A88C9800FF3DA2 /* MonsterPresenter.swift */; };
-		7BA5778725A89A3B00FF3DA2 /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA5778625A89A3B00FF3DA2 /* RouterTests.swift */; };
+		7BA577A125A8C63100FF3DA2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA577A025A8C63100FF3DA2 /* Router.swift */; };
+		7BA577AB25A8C65000FF3DA2 /* MonsterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA577A725A8C65000FF3DA2 /* MonsterPresenter.swift */; };
+		7BA577AC25A8C65000FF3DA2 /* MonsterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA577A925A8C65000FF3DA2 /* MonsterViewController.xib */; };
+		7BA577AD25A8C65000FF3DA2 /* MonsterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA577AA25A8C65000FF3DA2 /* MonsterViewController.swift */; };
+		7BA577B225A8C66C00FF3DA2 /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA577B125A8C66C00FF3DA2 /* RouterTests.swift */; };
 		7BAC3FA825A20F2100623263 /* LocationAuthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC3FA725A20F2100623263 /* LocationAuthStatus.swift */; };
 		7BAC3FAE25A2242200623263 /* MapPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC3FAD25A2242200623263 /* MapPresenterTests.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +57,7 @@
 		7B06767725A3418200A9D6C6 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
 		7B06767C25A352B600A9D6C6 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		7B26A94B25A3A4BB00A3FB55 /* MonstersUITests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MonstersUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		7B3801CB25B46A7000065DEB /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		7B3E571D25A0E9E4000F7772 /* Monsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B3E572025A0E9E4000F7772 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B3E572425A0E9E4000F7772 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -67,17 +72,20 @@
 		7B3E577725A0FC90000F7772 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		7B3E577C25A0FE86000F7772 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7B3E579225A100C0000F7772 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
+		7B45A77025B4BD2E00560492 /* ModelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelScene.swift; sourceTree = "<group>"; };
+		7B45A77525B4BD6400560492 /* BitMaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskCategory.swift; sourceTree = "<group>"; };
 		7B5DF92825A71AA800F3276A /* MonsterFarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterFarmTests.swift; sourceTree = "<group>"; };
+		7B70B68325B47E2A002C7990 /* MonsterPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterPresenterTests.swift; sourceTree = "<group>"; };
 		7B830B1A25A4B9FF00410AAF /* MonsterFarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterFarm.swift; sourceTree = "<group>"; };
 		7B830B2425A4D00000410AAF /* MonsterAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterAnnotation.swift; sourceTree = "<group>"; };
 		7B8EA6BA25A390D6005994D4 /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		7B8EA6CD25A39EF0005994D4 /* MonsterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTests.swift; sourceTree = "<group>"; };
 		7B8EA6EA25A3A483005994D4 /* MonstersUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonstersUITests.swift; sourceTree = "<group>"; };
-		7BA5776525A8854A00FF3DA2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		7BA5776E25A88BD700FF3DA2 /* MonsterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterViewController.swift; sourceTree = "<group>"; };
-		7BA5776F25A88BD700FF3DA2 /* MonsterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonsterViewController.xib; sourceTree = "<group>"; };
-		7BA5777D25A88C9800FF3DA2 /* MonsterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterPresenter.swift; sourceTree = "<group>"; };
-		7BA5778625A89A3B00FF3DA2 /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
+		7BA577A025A8C63100FF3DA2 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		7BA577A725A8C65000FF3DA2 /* MonsterPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterPresenter.swift; sourceTree = "<group>"; };
+		7BA577A925A8C65000FF3DA2 /* MonsterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonsterViewController.xib; sourceTree = "<group>"; };
+		7BA577AA25A8C65000FF3DA2 /* MonsterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterViewController.swift; sourceTree = "<group>"; };
+		7BA577B125A8C66C00FF3DA2 /* RouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
 		7BAC3FA725A20F2100623263 /* LocationAuthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAuthStatus.swift; sourceTree = "<group>"; };
 		7BAC3FAD25A2242200623263 /* MapPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,13 +156,14 @@
 			children = (
 				7B3E572025A0E9E4000F7772 /* AppDelegate.swift */,
 				7B26A94F25A3A51000A3FB55 /* Assembly */,
-				7BA5776A25A8856200FF3DA2 /* Router */,
+				7BA5779C25A8C5DD00FF3DA2 /* Router */,
 				7B3E576A25A0FAEC000F7772 /* MapModule */,
-				7BA5777525A88BE400FF3DA2 /* MonsterModule */,
+				7BA577A525A8C65000FF3DA2 /* MonsterModule */,
 				7B3E578A25A0FEF3000F7772 /* Services */,
 				7B06768125A352C000A9D6C6 /* Extensions */,
 				7B3E576225A0EF3B000F7772 /* LaunchScreen.storyboard */,
 				7B3E572925A0E9E5000F7772 /* Assets.xcassets */,
+				7B3801CB25B46A7000065DEB /* art.scnassets */,
 				7B3E572E25A0E9E5000F7772 /* Info.plist */,
 			);
 			path = Monsters;
@@ -163,11 +172,11 @@
 		7B3E573625A0E9E5000F7772 /* MonstersTests */ = {
 			isa = PBXGroup;
 			children = (
-				7BAC3FAD25A2242200623263 /* MapPresenterTests.swift */,
-				7B06767725A3418200A9D6C6 /* MapViewControllerTests.swift */,
-				7B5DF92825A71AA800F3276A /* MonsterFarmTests.swift */,
-				7B8EA6CD25A39EF0005994D4 /* MonsterTests.swift */,
-				7BA5778625A89A3B00FF3DA2 /* RouterTests.swift */,
+				7B70B67925B47DFB002C7990 /* RouterTests */,
+				7B70B66725B47DBE002C7990 /* MapModuleTests */,
+				7B70B66E25B47DD0002C7990 /* MonsterFarmTests */,
+				7B70B67525B47DEA002C7990 /* MonsterModelTests */,
+				7B45A78025B4C03400560492 /* MonsterModule */,
 				7B3E573925A0E9E5000F7772 /* Info.plist */,
 			);
 			path = MonstersTests;
@@ -219,6 +228,56 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		7B45A78025B4C03400560492 /* MonsterModule */ = {
+			isa = PBXGroup;
+			children = (
+				7B70B68325B47E2A002C7990 /* MonsterPresenterTests.swift */,
+			);
+			path = MonsterModule;
+			sourceTree = "<group>";
+		};
+		7B45A78425B4C25F00560492 /* SceneKitHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				7B45A77025B4BD2E00560492 /* ModelScene.swift */,
+				7B45A77525B4BD6400560492 /* BitMaskCategory.swift */,
+			);
+			path = SceneKitHelpers;
+			sourceTree = "<group>";
+		};
+		7B70B66725B47DBE002C7990 /* MapModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				7BAC3FAD25A2242200623263 /* MapPresenterTests.swift */,
+				7B06767725A3418200A9D6C6 /* MapViewControllerTests.swift */,
+			);
+			path = MapModuleTests;
+			sourceTree = "<group>";
+		};
+		7B70B66E25B47DD0002C7990 /* MonsterFarmTests */ = {
+			isa = PBXGroup;
+			children = (
+				7B5DF92825A71AA800F3276A /* MonsterFarmTests.swift */,
+			);
+			path = MonsterFarmTests;
+			sourceTree = "<group>";
+		};
+		7B70B67525B47DEA002C7990 /* MonsterModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				7B8EA6CD25A39EF0005994D4 /* MonsterTests.swift */,
+			);
+			path = MonsterModelTests;
+			sourceTree = "<group>";
+		};
+		7B70B67925B47DFB002C7990 /* RouterTests */ = {
+			isa = PBXGroup;
+			children = (
+				7BA577B125A8C66C00FF3DA2 /* RouterTests.swift */,
+			);
+			path = RouterTests;
+			sourceTree = "<group>";
+		};
 		7B8EA6BF25A39174005994D4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,38 +287,39 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		7BA5776A25A8856200FF3DA2 /* Router */ = {
+		7BA5779C25A8C5DD00FF3DA2 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				7BA5776525A8854A00FF3DA2 /* Router.swift */,
+				7BA577A025A8C63100FF3DA2 /* Router.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
 		};
-		7BA5777525A88BE400FF3DA2 /* MonsterModule */ = {
+		7BA577A525A8C65000FF3DA2 /* MonsterModule */ = {
 			isa = PBXGroup;
 			children = (
-				7BA5777925A88C4500FF3DA2 /* View */,
-				7BA5778225A88C9E00FF3DA2 /* Presenter */,
+				7BA577A625A8C65000FF3DA2 /* Presenter */,
+				7BA577A825A8C65000FF3DA2 /* View */,
+				7B45A78425B4C25F00560492 /* SceneKitHelpers */,
 			);
 			path = MonsterModule;
 			sourceTree = "<group>";
 		};
-		7BA5777925A88C4500FF3DA2 /* View */ = {
+		7BA577A625A8C65000FF3DA2 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				7BA5776E25A88BD700FF3DA2 /* MonsterViewController.swift */,
-				7BA5776F25A88BD700FF3DA2 /* MonsterViewController.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		7BA5778225A88C9E00FF3DA2 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				7BA5777D25A88C9800FF3DA2 /* MonsterPresenter.swift */,
+				7BA577A725A8C65000FF3DA2 /* MonsterPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		7BA577A825A8C65000FF3DA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BA577A925A8C65000FF3DA2 /* MonsterViewController.xib */,
+				7BA577AA25A8C65000FF3DA2 /* MonsterViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7BAC3FA325A1FC2400623263 /* LocationService */ = {
@@ -376,7 +436,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B3E572A25A0E9E5000F7772 /* Assets.xcassets in Resources */,
-				7BA5777125A88BD700FF3DA2 /* MonsterViewController.xib in Resources */,
+				7BA577AC25A8C65000FF3DA2 /* MonsterViewController.xib in Resources */,
+				7B3801CC25B46A7000065DEB /* art.scnassets in Resources */,
 				7B3E577325A0FB1C000F7772 /* MapViewController.xib in Resources */,
 				7B3E576325A0EF3B000F7772 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -403,17 +464,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BA5776625A8854A00FF3DA2 /* Router.swift in Sources */,
+				7BA577A125A8C63100FF3DA2 /* Router.swift in Sources */,
 				7B8EA6BB25A390D6005994D4 /* Monster.swift in Sources */,
+				7BA577AD25A8C65000FF3DA2 /* MonsterViewController.swift in Sources */,
 				7B3E577D25A0FE86000F7772 /* LocationManager.swift in Sources */,
 				7B3E572525A0E9E4000F7772 /* MapViewController.swift in Sources */,
 				7B3E572125A0E9E4000F7772 /* AppDelegate.swift in Sources */,
-				7BA5777E25A88C9800FF3DA2 /* MonsterPresenter.swift in Sources */,
 				7B830B2525A4D00000410AAF /* MonsterAnnotation.swift in Sources */,
+				7B45A77625B4BD6400560492 /* BitMaskCategory.swift in Sources */,
 				7B3E579325A100C0000F7772 /* AssemblyBuilder.swift in Sources */,
 				7B830B1B25A4B9FF00410AAF /* MonsterFarm.swift in Sources */,
 				7BAC3FA825A20F2100623263 /* LocationAuthStatus.swift in Sources */,
-				7BA5777025A88BD700FF3DA2 /* MonsterViewController.swift in Sources */,
+				7BA577AB25A8C65000FF3DA2 /* MonsterPresenter.swift in Sources */,
+				7B45A77125B4BD2E00560492 /* ModelScene.swift in Sources */,
 				7B3E577825A0FC90000F7772 /* MapPresenter.swift in Sources */,
 				7B06767D25A352B600A9D6C6 /* UIButton+Extension.swift in Sources */,
 			);
@@ -423,9 +486,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BA5778725A89A3B00FF3DA2 /* RouterTests.swift in Sources */,
+				7BA577B225A8C66C00FF3DA2 /* RouterTests.swift in Sources */,
 				7B8EA6CE25A39EF0005994D4 /* MonsterTests.swift in Sources */,
 				7BAC3FAE25A2242200623263 /* MapPresenterTests.swift in Sources */,
+				7B70B68425B47E2A002C7990 /* MonsterPresenterTests.swift in Sources */,
 				7B06767825A3418200A9D6C6 /* MapViewControllerTests.swift in Sources */,
 				7B5DF92925A71AA800F3276A /* MonsterFarmTests.swift in Sources */,
 			);
@@ -506,7 +570,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -561,7 +625,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -8,7 +8,13 @@
 import Foundation
 import CoreLocation
 
-class Monster {
+protocol MonsterModelProtocol: class {
+    var name: String { get }
+    var imageName: String { get }
+    var level: Int { get set }
+}
+
+class Monster: MonsterModelProtocol  {
     
     let name: String
     let imageName: String

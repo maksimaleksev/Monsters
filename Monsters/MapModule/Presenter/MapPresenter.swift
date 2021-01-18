@@ -29,17 +29,17 @@ protocol MapPresenterProtocol: class {
     func makeAnnotations() -> [MonsterAnnotation]
     func startTimer()
     func stopTimer()
-    func showMonster(_ monster: Monster)
+    func showMonster(_ monster: MonsterModelProtocol)
 }
 
 class MapPresenter: MapPresenterProtocol {
             
-    internal weak var view: MapViewProtocol?
-    internal var locationManager: LocationManagerProtocol?
-    internal var userLocation: CLLocationCoordinate2D?
-    internal var monsters: [Monster]!
-    internal var router: RouterProtocol?
-    internal var timer: Timer?
+    weak var view: MapViewProtocol?
+    var locationManager: LocationManagerProtocol?
+    var userLocation: CLLocationCoordinate2D?
+    var monsters: [Monster]!
+    var router: RouterProtocol?
+    var timer: Timer?
     
     //Tells when map on view is loaded
     var mapViewIsLoaded: Bool = false
@@ -161,7 +161,7 @@ class MapPresenter: MapPresenterProtocol {
         timer = nil
     }
     
-    func showMonster(_ monster: Monster) {
+    func showMonster(_ monster: MonsterModelProtocol) {
         router?.showMonsterModule(monster)
     }
 

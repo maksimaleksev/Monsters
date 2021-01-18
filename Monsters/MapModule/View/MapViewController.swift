@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 protocol MapViewProtocol: class {
-    var scale: Double { get set }
+    var scaleCounter: Int { get set }
     func show(region: MKCoordinateRegion)
     func showLocationSettingsAlert(title: String, message: String)
     func setAnnotations(_ annotations: [MonsterAnnotation])
@@ -17,8 +17,9 @@ protocol MapViewProtocol: class {
 
 class MapViewController: UIViewController {
     
-    internal var presenter: MapPresenterProtocol!
-    internal var scale = 0.0
+    var presenter: MapPresenterProtocol!
+    private var deltaScale = 0.025
+    internal var scaleCounter = 0
     
     //MARK: - IBOutlets
     
@@ -62,12 +63,13 @@ class MapViewController: UIViewController {
     
     @IBAction func zoomInButtonTapped(_ sender: UIButton) {
         
-        if scale > 0.03 {
-            scale -= 0.025
+        if scaleCounter > 1 {
+            scaleCounter -= 1
+            let scale = Double(scaleCounter) - deltaScale
             let region = presenter.makeRegion(center: mapView.centerCoordinate, scale: scale)
             mapView.setRegion(region, animated: true)
         } else {
-            scale = 0.0
+            scaleCounter = 0
             let region = presenter.makeRegion(regionRadius: 300, for: mapView.centerCoordinate)
             mapView.setRegion(region, animated: true)
         }
@@ -75,13 +77,14 @@ class MapViewController: UIViewController {
     
     @IBAction func zoomOutButtonTapped(_ sender: UIButton) {
         
-        scale += 0.025
+        let scale = Double(scaleCounter) + deltaScale
+        scaleCounter += 1
         let region = presenter.makeRegion(center: mapView.centerCoordinate, scale: scale)
         mapView.setRegion(region, animated: true)
     }
     
     @IBAction func centerMapOnUserButtonTapped(_ sender: UIButton) {
-        scale = 0.0
+        scaleCounter = 0
         presenter.showRegion()
     }
     

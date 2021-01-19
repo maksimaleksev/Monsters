@@ -12,9 +12,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MonsterViewController" customModule="Monsters" customModuleProvider="target">
             <connections>
                 <outlet property="actionButton" destination="gr3-Wx-pWe" id="CH4-8S-NYT"/>
-                <outlet property="actionButtonLeadingAnhcorToResetButton" destination="Ofg-SM-ajM" id="jFO-Ey-isR"/>
+                <outlet property="actionButtonLeadingAnhcor" destination="Ofg-SM-ajM" id="jFO-Ey-isR"/>
                 <outlet property="annotationLabel" destination="ovX-Sz-YZS" id="Ywu-hE-Zll"/>
                 <outlet property="annotationView" destination="6C3-5q-wN7" id="TXl-8B-GcH"/>
+                <outlet property="attemptOneImage" destination="FV5-b3-mZp" id="aEB-tt-3BI"/>
+                <outlet property="attemptThreeImage" destination="wMP-Uu-cG0" id="Og5-tm-HAX"/>
+                <outlet property="attemptTwoImage" destination="m93-V6-Lpf" id="rY7-Wb-9re"/>
+                <outlet property="attemptsStackView" destination="VzJ-JM-y7L" id="W26-nM-Rzk"/>
                 <outlet property="resetButton" destination="VCh-PY-VOh" id="8gb-fv-bf8"/>
                 <outlet property="sceneView" destination="Ms7-Vn-K7s" id="b4H-qB-fDK"/>
                 <outlet property="statusLabel" destination="P31-ko-y4o" id="xgR-Vd-92x"/>
@@ -36,8 +40,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Запуск..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P31-ko-y4o">
-                                <rect key="frame" x="8" y="52.666666666666664" width="374" height="19.333333333333336"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <rect key="frame" x="8" y="55" width="374" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -102,19 +106,47 @@
                         <action selector="actionButtonTapped:" destination="-1" eventType="touchUpInside" id="bfV-qV-YRu"/>
                     </connections>
                 </button>
+                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VzJ-JM-y7L">
+                    <rect key="frame" x="277" y="88" width="105" height="35"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokeball" translatesAutoresizingMaskIntoConstraints="NO" id="FV5-b3-mZp">
+                            <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="4yZ-3D-Ihh"/>
+                                <constraint firstAttribute="width" secondItem="FV5-b3-mZp" secondAttribute="height" id="wst-he-uTV"/>
+                            </constraints>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokeball" translatesAutoresizingMaskIntoConstraints="NO" id="m93-V6-Lpf">
+                            <rect key="frame" x="35" y="0.0" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="dgL-R7-uhA"/>
+                                <constraint firstAttribute="width" secondItem="m93-V6-Lpf" secondAttribute="height" id="pq8-cU-viC"/>
+                            </constraints>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokeball" translatesAutoresizingMaskIntoConstraints="NO" id="wMP-Uu-cG0">
+                            <rect key="frame" x="70" y="0.0" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="3SY-MC-dnJ"/>
+                                <constraint firstAttribute="width" secondItem="wMP-Uu-cG0" secondAttribute="height" id="ZII-sa-i8Y"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="O6l-IS-uk9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4xB-sA-gkv"/>
+                <constraint firstItem="VzJ-JM-y7L" firstAttribute="top" secondItem="O6l-IS-uk9" secondAttribute="bottom" constant="8" id="8u6-F4-J69"/>
                 <constraint firstItem="O6l-IS-uk9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BkI-JA-JQa"/>
                 <constraint firstItem="Ms7-Vn-K7s" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DfI-dg-5sN"/>
                 <constraint firstItem="6C3-5q-wN7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="Fvn-Uw-zRc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="O6l-IS-uk9" secondAttribute="trailing" id="Hk2-Id-p41"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gr3-Wx-pWe" secondAttribute="trailing" constant="24" id="IQx-eL-QjK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VCh-PY-VOh" secondAttribute="bottom" constant="8" id="Idh-9C-ONx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VzJ-JM-y7L" secondAttribute="trailing" constant="8" id="JCH-2J-LZz"/>
                 <constraint firstAttribute="bottom" secondItem="Ms7-Vn-K7s" secondAttribute="bottom" id="Lq2-a3-ial"/>
-                <constraint firstItem="gr3-Wx-pWe" firstAttribute="leading" secondItem="VCh-PY-VOh" secondAttribute="trailing" constant="24" id="Ofg-SM-ajM"/>
+                <constraint firstItem="gr3-Wx-pWe" firstAttribute="leading" secondItem="Ms7-Vn-K7s" secondAttribute="leading" constant="124" id="Ofg-SM-ajM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gr3-Wx-pWe" secondAttribute="bottom" constant="8" id="RPP-MO-Wbm"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6C3-5q-wN7" secondAttribute="trailing" constant="50" id="XUg-wL-wAy"/>
                 <constraint firstItem="6C3-5q-wN7" firstAttribute="top" secondItem="O6l-IS-uk9" secondAttribute="bottom" constant="56" id="abG-0V-rVv"/>
@@ -126,6 +158,7 @@
         </view>
     </objects>
     <resources>
+        <image name="pokeball" width="75" height="75"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

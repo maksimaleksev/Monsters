@@ -10,12 +10,13 @@ import SceneKit
 import ARKit
 
 protocol MonsterViewProtocol: class {
+    
     var presenter: MonsterPresenterProtocol! { get set }
     
     func setStatusLabelText(trackingStatus: String, statusMessage: String)
     func setAnnotationLabelTextCaseMonster(monsterName: String, monsterLevel: String)
     func launchPokeBall()
-    func setupAfterMonsterCatched()
+    func setupAfter(monsterCatched: MonsterViewControllerState)
     
 }
 
@@ -26,6 +27,7 @@ class MonsterViewController: UIViewController {
     
     var presenter: MonsterPresenterProtocol!
     private let viewsCornerRadius: CGFloat = 5
+    private var numberAtempts: Int = 0
     lazy var monsterNode: SCNNode? = presenter.createScene()?.node
     
     //MARK: - IBOutlets
@@ -36,7 +38,11 @@ class MonsterViewController: UIViewController {
     @IBOutlet weak var annotationLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var actionButton: UIButton!
-    @IBOutlet weak var actionButtonLeadingAnhcorToResetButton: NSLayoutConstraint!
+    @IBOutlet weak var actionButtonLeadingAnhcor: NSLayoutConstraint!
+    @IBOutlet weak var attemptsStackView: UIStackView!
+    @IBOutlet weak var attemptOneImage: UIImageView!
+    @IBOutlet weak var attemptTwoImage: UIImageView!
+    @IBOutlet weak var attemptThreeImage: UIImageView!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -68,7 +74,20 @@ class MonsterViewController: UIViewController {
     }
     
     @IBAction func actionButtonTapped(_ sender: UIButton) {
-        presenter.action()
+        numberAtempts += 1
+        
+        if numberAtempts <= 3 {
+            
+            setAttemptImage(numberAtempts)
+            presenter.action()
+            
+        } else if numberAtempts == 4 {
+            
+            setupAfter(monsterCatched: .Loosed)
+                        
+        } else {
+            presenter.action()
+        }
     }
     
 }
@@ -76,16 +95,54 @@ class MonsterViewController: UIViewController {
 
 //MARK: - MonsterViewProtocol
 extension MonsterViewController: MonsterViewProtocol {
-    func setupAfterMonsterCatched() {
+    
+    func setupAfter(monsterCatched: MonsterViewControllerState) {
+        
         sceneView.session.pause()
-        resetButton.isEnabled = false
-        annotationView.isHidden = true
-                        
-        actionButton.setTitle("Вернуться к картам", for: .normal)
-        presenter.setVCState(.MonsterCatched)
+        resetButton.isHidden = true
+        attemptsStackView.isHidden = true
+        
+        UIView.animate(withDuration: 1,
+                       delay: 0,
+                       usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 1,
+                       options: .curveEaseOut,
+                       animations: {[weak self] in
+                        self?.annotationView.alpha = 0 },
+                       completion: nil)
+        
+        UIView.animate(withDuration: 1,
+                       delay: 0,
+                       usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 1,
+                       options: .curveEaseOut,
+                       animations: {[weak self] in
+                        self?.actionButtonLeadingAnhcor.constant = 24 },
+                       completion: nil)
+        
+        actionButtonLeadingAnhcor.constant = 24
+        actionButton.setTitle("ВЕРНУТЬСЯ К КАРТАМ", for: .normal)
+        presenter.setVCState(monsterCatched)
         presenter.updateStatus()
+
     }
     
+    
+    private func setAttemptImage(_ attempt: Int) {
+        
+        switch attempt {
+        case 1:
+            attemptThreeImage.alpha = 0
+        case 2:
+            attemptTwoImage.alpha = 0
+        case 3:
+            attemptOneImage.alpha = 0
+            
+        default:
+            break
+        }
+        
+    }
     
     func setAnnotationLabelTextCaseMonster(monsterName: String, monsterLevel: String) {
         self.annotationLabel.text = monsterName + ",\nуровень: " + monsterLevel
@@ -350,16 +407,19 @@ extension MonsterViewController {
                     
                     self.monsterNode?.position = SCNVector3(x: t.columns.3.x, y: t.columns.3.y, z: t.columns.3.z)
                     
-                    guard presenter.vcState != .MonsterCatched else { return }
+                    guard presenter.vcState != .MonsterCatched,
+                          presenter.vcState != .Loosed else { return }
                     presenter.setVCState(.Started)
                     actionButton.isHidden = false
+                    attemptsStackView.isHidden = false
                     presenter.setAnnotationView()
                     
                 }
                 
             } else {
                 
-                guard presenter.vcState != .MonsterCatched else { return }
+                guard presenter.vcState != .MonsterCatched,
+                      presenter.vcState != .Loosed else { return }
                 
                 presenter.setVCState(.PointAtSurface)
                 
@@ -374,11 +434,11 @@ extension MonsterViewController {
 extension MonsterViewController: SCNPhysicsContactDelegate {
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-                       
+        
         DispatchQueue.main.async {
             contact.nodeA.removeFromParentNode()
             contact.nodeB.removeFromParentNode()
-            self.setupAfterMonsterCatched()
+            self.setupAfter(monsterCatched: .MonsterCatched)
         }
     }
 }

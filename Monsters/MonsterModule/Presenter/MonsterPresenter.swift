@@ -38,15 +38,14 @@ protocol MonsterPresenterProtocol: class {
 enum MonsterViewControllerState: Int16 {
     case DetectSurface
     case PointAtSurface
-    case TapToStart
     case Started
     case MonsterCatched
+    case Loosed
 }
 
 class MonsterPresenter: MonsterPresenterProtocol {
     
-    
-    
+        
     //MARK: - Properties
     weak var view: MonsterViewProtocol?
     weak var monster: MonsterModelProtocol?
@@ -65,6 +64,7 @@ class MonsterPresenter: MonsterPresenterProtocol {
     }
     
     //MARK: - Methods
+    
     func createScene() -> ModelScene? {
         guard let monster = monster else { return nil }
         return ModelScene(named: monster.imageName)
@@ -93,12 +93,12 @@ class MonsterPresenter: MonsterPresenterProtocol {
             statusMessage = "Сканирование доступных плоских поверхностей..."
         case .PointAtSurface:
             statusMessage = "Сначала наведите камеру на поверхность!"
-        case .TapToStart:
-            statusMessage = "Tap to start."
         case .Started:
             statusMessage = "Поймайте монстра!"
         case .MonsterCatched:
             statusMessage = "Ура, вы поймали монстра!"
+        case .Loosed:
+            statusMessage = "Монстр скрылся, попробуйте в следующий раз!"
         }
         
         view?.setStatusLabelText(trackingStatus: trackingStatus, statusMessage: statusMessage)
@@ -138,6 +138,9 @@ class MonsterPresenter: MonsterPresenterProtocol {
             view?.launchPokeBall()
             
         case .MonsterCatched:
+            goToRootVC()
+            
+        case .Loosed:
             goToRootVC()
             
         default:

@@ -15,7 +15,7 @@ protocol MonsterModelProtocol: class {
 }
 
 class Monster: MonsterModelProtocol  {
-    
+
     let name: String
     let imageName: String
     var level: Int
@@ -27,8 +27,6 @@ class Monster: MonsterModelProtocol  {
         self.level = level
         self.coordinate = coordinate
     }
-   
-
 }
 
 //MARK: - Location methods
@@ -48,3 +46,10 @@ extension Monster {
     }
 }
 
+//MARK: - Equatable conform
+extension Monster: Equatable {
+    
+    static func == (lhs: Monster, rhs: Monster) -> Bool {
+        return lhs.name == rhs.name && lhs.level == rhs.level
+    }
+}

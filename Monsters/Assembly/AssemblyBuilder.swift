@@ -7,11 +7,16 @@
 
 import UIKit
 
+
+//MARK: - AssemblyBuilder Protocol
+
 protocol AssemblyBuilderProtocol: class {
 
     func createMapModule(router: RouterProtocol) -> MapViewController
     func createMonsterModule(monster: MonsterModelProtocol, router: RouterProtocol) -> MonsterViewController
 }
+
+//MARK: - AssemblyBuilder class
 
 class AssemblyBuilder: AssemblyBuilderProtocol {
     

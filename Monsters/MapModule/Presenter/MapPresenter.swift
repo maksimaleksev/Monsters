@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
+//MARK: - Map presenter Protocol
 
 protocol MapPresenterProtocol: class {
     var view: MapViewProtocol? { get set }
@@ -30,10 +31,14 @@ protocol MapPresenterProtocol: class {
     func startTimer()
     func stopTimer()
     func showMonster(_ monster: MonsterModelProtocol)
+    func catchedMonsterHandler(_ monster: MonsterModelProtocol)
 }
 
+//MARK: - Map presenter class
 class MapPresenter: MapPresenterProtocol {
-            
+    
+    //MARK: - Properties
+    
     weak var view: MapViewProtocol?
     var locationManager: LocationManagerProtocol?
     var userLocation: CLLocationCoordinate2D?
@@ -50,11 +55,15 @@ class MapPresenter: MapPresenterProtocol {
     //Accuracy region need to determine when user moves
     let accuracyRegionRadius: Double =  100
     
+    //MARK: - Init
+    
     required init(view: MapViewProtocol, locationManager: LocationManagerProtocol, router: RouterProtocol) {
         self.view = view
         self.locationManager = locationManager
         self.router = router
     }
+    
+    //MARK: - Methods
     
     //Get location
     func getLocation(_ location: CLLocationCoordinate2D) {
@@ -161,8 +170,22 @@ class MapPresenter: MapPresenterProtocol {
         timer = nil
     }
     
+    //Segue to MonsterViewController
+    
     func showMonster(_ monster: MonsterModelProtocol) {
+        stopTimer()
         router?.showMonsterModule(monster)
     }
 
+    //Handing when monster catch
+    
+    func catchedMonsterHandler(_ monster: MonsterModelProtocol) {
+        
+        let m = monster as! Monster
+        guard let index = monsters.firstIndex(of: m) else { return }
+        monsters.remove(at: index)
+        let annotaions = makeAnnotations()
+        view?.setAnnotations(annotaions)
+        startTimer()
+    }
 }

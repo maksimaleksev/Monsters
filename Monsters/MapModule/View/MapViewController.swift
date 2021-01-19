@@ -93,21 +93,20 @@ class MapViewController: UIViewController {
     //Set colors for screen mode
     private func setupButtonsAppereance() {
         
-        if #available(iOS 12.0, *) {
-            switch self.traitCollection.userInterfaceStyle {
-            
-            case .light:
-                zoomInButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
-                zoomOutButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
-                centerMapOnUserButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
-            case .dark:
-                zoomInButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.1540525854, green: 0.1540525854, blue: 0.1540525854, alpha: 0.75))
-                zoomOutButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.150000006, green: 0.150000006, blue: 0.150000006, alpha: 0.75))
-                centerMapOnUserButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.150000006, green: 0.150000006, blue: 0.150000006, alpha: 0.75))
-            default:
-                break
-            }
+        switch self.traitCollection.userInterfaceStyle {
+        
+        case .light:
+            zoomInButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
+            zoomOutButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
+            centerMapOnUserButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
+        case .dark:
+            zoomInButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.1540525854, green: 0.1540525854, blue: 0.1540525854, alpha: 0.75))
+            zoomOutButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.150000006, green: 0.150000006, blue: 0.150000006, alpha: 0.75))
+            centerMapOnUserButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.150000006, green: 0.150000006, blue: 0.150000006, alpha: 0.75))
+        default:
+            break
         }
+        
     }
     
     //Setup appdelegate
@@ -134,13 +133,11 @@ class MapViewController: UIViewController {
 //MARK: - MapViewProtocol
 
 extension MapViewController: MapViewProtocol {
-    
+   
     func setAnnotations(_ annotations: [MonsterAnnotation]) {
         removeAppleMapOverlays()
         mapView.addAnnotations(annotations)
     }
-    
-    
     
     func show(region: MKCoordinateRegion) {
         guard let mapView = mapView else { return }

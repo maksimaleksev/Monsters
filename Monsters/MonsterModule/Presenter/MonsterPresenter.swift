@@ -23,7 +23,7 @@ protocol MonsterPresenterProtocol: class {
     init (view: MonsterViewProtocol, monster: MonsterModelProtocol, router: RouterProtocol)
     
     func createScene() -> ModelScene?
-    func goToRootVC()
+    func goToRootVC(_ monster: MonsterModelProtocol?)
     func setVCState(_ state: MonsterViewControllerState)
     func setTrackingStatus(_ status: String)
     func updateStatus()
@@ -33,7 +33,7 @@ protocol MonsterPresenterProtocol: class {
     func createPokeBall() -> SCNNode?
 }
 
-// MARK: - ViewController State Management
+// MARK: - For MonsterViewController State Management
 
 enum MonsterViewControllerState: Int16 {
     case DetectSurface
@@ -43,13 +43,14 @@ enum MonsterViewControllerState: Int16 {
     case Loosed
 }
 
+//MARK: - MonsterPresenter Class
+
 class MonsterPresenter: MonsterPresenterProtocol {
-    
         
     //MARK: - Properties
     weak var view: MonsterViewProtocol?
     weak var monster: MonsterModelProtocol?
-    var router: RouterProtocol
+    unowned var router: RouterProtocol
     
     var trackingStatus: String = ""
     var statusMessage: String = ""
@@ -63,28 +64,43 @@ class MonsterPresenter: MonsterPresenterProtocol {
         self.router = router
     }
     
+    deinit {
+        print(String(describing: MonsterPresenter.self) + " deinit")
+    }
+    
     //MARK: - Methods
     
+    //Creating Scene 
     func createScene() -> ModelScene? {
         guard let monster = monster else { return nil }
         return ModelScene(named: monster.imageName)
     }
     
-    func goToRootVC() {
-        router.popToRoot()
+    //Return to mapVC
+    func goToRootVC(_ monster: MonsterModelProtocol?) {
+        
+        guard let monster = monster  else {
+            router.popToMapViewController(.Loose)
+            return
+        }
+        
+        router.popToMapViewController(.Monster(monster))
     }
     
     //Set vcState
+    
     func setVCState(_ state: MonsterViewControllerState) {
         vcState = state
     }
     
     //Set trackingStatus
+    
     func setTrackingStatus(_ status: String) {
         self.trackingStatus = status
     }
     
     //Update statusMessage
+    
     func updateStatus() {
         
         switch vcState {
@@ -105,6 +121,7 @@ class MonsterPresenter: MonsterPresenterProtocol {
     }
     
     //Setup focusPoint
+    
     func setFocusPoint(_ coordinate: CGPoint) {
         self.focusPoint = coordinate
     }
@@ -138,15 +155,17 @@ class MonsterPresenter: MonsterPresenterProtocol {
             view?.launchPokeBall()
             
         case .MonsterCatched:
-            goToRootVC()
+            goToRootVC(self.monster)
             
         case .Loosed:
-            goToRootVC()
+            goToRootVC(nil)
             
         default:
             break
         }
     }
+    
+    //CreatePokeBall node
     
     func createPokeBall() -> SCNNode? {
         

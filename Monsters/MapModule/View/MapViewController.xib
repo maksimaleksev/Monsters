@@ -14,6 +14,7 @@
                 <outlet property="centerMapOnUserButton" destination="KhK-aV-Gje" id="pda-Pk-XQa"/>
                 <outlet property="mapView" destination="vMw-1U-wbh" id="SVl-vQ-mcB"/>
                 <outlet property="scaleButtonsStackView" destination="4Mx-sC-DKo" id="O0W-xK-t35"/>
+                <outlet property="showMyTeamButton" destination="nzN-dR-vBQ" id="8mg-3b-fLe"/>
                 <outlet property="view" destination="iN0-l3-epB" id="LKM-UL-TIC"/>
                 <outlet property="zoomInButton" destination="bwc-i5-sef" id="N7u-Ii-Mlh"/>
                 <outlet property="zoomOutButton" destination="fhI-Yv-MuF" id="iTJ-rD-9y3"/>
@@ -76,16 +77,32 @@
                         <action selector="centerMapOnUserButtonTapped:" destination="-1" eventType="touchUpInside" id="gvG-y9-bm0"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzN-dR-vBQ">
+                    <rect key="frame" x="24" y="788" width="308" height="50"/>
+                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="nfH-ai-hej"/>
+                    </constraints>
+                    <state key="normal" title="Показать мою команду">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="showMyTeamButtonTapped:" destination="-1" eventType="touchUpInside" id="FvC-9Q-BhV"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="KhK-aV-Gje" secondAttribute="bottom" constant="24" id="A2W-eL-K28"/>
+                <constraint firstItem="nzN-dR-vBQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="Cvg-iW-FPT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vMw-1U-wbh" secondAttribute="trailing" id="XBH-Pa-sVu"/>
+                <constraint firstItem="KhK-aV-Gje" firstAttribute="leading" secondItem="nzN-dR-vBQ" secondAttribute="trailing" constant="24" id="bjr-gU-2hu"/>
                 <constraint firstAttribute="bottom" secondItem="vMw-1U-wbh" secondAttribute="bottom" id="cuX-ZF-8Y9"/>
                 <constraint firstItem="vMw-1U-wbh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jbK-pq-103"/>
                 <constraint firstItem="vMw-1U-wbh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lKl-dK-bP2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4Mx-sC-DKo" secondAttribute="trailing" constant="8" id="nTy-Y0-38m"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nzN-dR-vBQ" secondAttribute="bottom" constant="24" id="ns6-Cw-9sp"/>
                 <constraint firstItem="4Mx-sC-DKo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="oEo-cd-PRc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KhK-aV-Gje" secondAttribute="trailing" constant="8" id="yPl-gu-6wZ"/>
             </constraints>
@@ -96,6 +113,9 @@
         <image name="location.fill" width="48" height="47.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -18,6 +18,7 @@ protocol RouterProtocol: class {
     func initialViewController()
     func showMonsterModule(_ monster: MonsterModelProtocol)
     func popToMapViewController(_ case: SegueCases)
+    func showMonstersTeamModule()
 }
 
 //MARK: - Segue cases
@@ -55,6 +56,7 @@ class Router: RouterProtocol {
             navigationController.viewControllers = [mainViewController]
         }
     }
+    
     //Show Monster module
     func showMonsterModule(_ monster: MonsterModelProtocol) {
         if let navigationController = navigationController {
@@ -62,6 +64,14 @@ class Router: RouterProtocol {
             navigationController.pushViewController(monsterViewController, animated: true)
         }
         
+    }
+    
+    func showMonstersTeamModule() {
+        
+        if let navigationController = navigationController {
+            guard let monstersTeamViewController = assemblyBuilder?.createMonsterTeamModel(router: self)  else { return }
+            navigationController.pushViewController(monstersTeamViewController, animated: true)
+        }
     }
     
     //Back to map view controller

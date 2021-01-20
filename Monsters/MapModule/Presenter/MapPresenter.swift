@@ -32,6 +32,7 @@ protocol MapPresenterProtocol: class {
     func stopTimer()
     func showMonster(_ monster: MonsterModelProtocol)
     func catchedMonsterHandler(_ monster: MonsterModelProtocol)
+    func showMyTeam()
 }
 
 //MARK: - Map presenter class
@@ -187,5 +188,12 @@ class MapPresenter: MapPresenterProtocol {
         let annotaions = makeAnnotations()
         view?.setAnnotations(annotaions)
         startTimer()
+    }
+    
+    //Segue to MonstersTeamViewController
+    
+    func showMyTeam() {
+        stopTimer()
+        router?.showMonstersTeamModule()
     }
 }

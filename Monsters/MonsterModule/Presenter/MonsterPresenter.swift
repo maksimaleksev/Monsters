@@ -31,6 +31,7 @@ protocol MonsterPresenterProtocol: class {
     func setAnnotationView()
     func action()
     func createPokeBall() -> SCNNode?
+    func storeMonster()
 }
 
 // MARK: - For MonsterViewController State Management
@@ -155,6 +156,7 @@ class MonsterPresenter: MonsterPresenterProtocol {
             view?.launchPokeBall()
             
         case .MonsterCatched:
+            storeMonster()
             goToRootVC(self.monster)
             
         case .Loosed:
@@ -175,5 +177,22 @@ class MonsterPresenter: MonsterPresenterProtocol {
         
     }
     
+    //Store Monster in UserDefaults
     
+    func storeMonster() {
+        
+        guard let monster = monster as? Monster else { return }
+        
+        let teamedMonster = TeamedMonsterModel(name: monster.name, imageName: monster.imageName, level: monster.level)
+        
+        let defaults = UserDefaults.standard
+        var monsterList = defaults.savedMonsters()
+        
+        monsterList.append(teamedMonster)
+        
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: monsterList, requiringSecureCoding: false) {
+            defaults.set(savedData, forKey: UserDefaults.monsterTeam)
+        }
+    }
+
 }

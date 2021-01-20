@@ -28,6 +28,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var zoomInButton: UIButton!
     @IBOutlet weak var zoomOutButton: UIButton!
     @IBOutlet weak var centerMapOnUserButton: UIButton!
+    @IBOutlet weak var showMyTeamButton: UIButton!
     
     //MARK: - LifeCycle
     
@@ -47,6 +48,7 @@ class MapViewController: UIViewController {
         super.viewDidLayoutSubviews()
         scaleButtonsStackView.layer.cornerRadius = 5
         centerMapOnUserButton.layer.cornerRadius = centerMapOnUserButton.frame.width/2
+        showMyTeamButton.layer.cornerRadius = 5
         centerMapOnUserButton.imageEdgeInsets = .init(top: 11, left: 11, bottom: 11, right: 11)
     }
     
@@ -86,6 +88,10 @@ class MapViewController: UIViewController {
     @IBAction func centerMapOnUserButtonTapped(_ sender: UIButton) {
         scaleCounter = 0
         presenter.showRegion()
+    }
+    
+    @IBAction func showMyTeamButtonTapped(_ sender: UIButton) {
+        presenter.showMyTeam()
     }
     
     //MARK: - Class methods

@@ -20,6 +20,13 @@
 		7B3E579325A100C0000F7772 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E579225A100C0000F7772 /* AssemblyBuilder.swift */; };
 		7B45A77125B4BD2E00560492 /* ModelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A77025B4BD2E00560492 /* ModelScene.swift */; };
 		7B45A77625B4BD6400560492 /* BitMaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A77525B4BD6400560492 /* BitMaskCategory.swift */; };
+		7B45A79425B86E1000560492 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A79325B86E1000560492 /* UserDefaults+Extension.swift */; };
+		7B45A79925B86ED400560492 /* TeamedMonsterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A79825B86ED400560492 /* TeamedMonsterModel.swift */; };
+		7B45A7A525B872C100560492 /* MonsterTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A7A325B872C100560492 /* MonsterTeamViewController.swift */; };
+		7B45A7A625B872C100560492 /* MonsterTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45A7A425B872C100560492 /* MonsterTeamViewController.xib */; };
+		7B45A7B725B8736E00560492 /* MonsterTeamPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A7B625B8736E00560492 /* MonsterTeamPresenter.swift */; };
+		7B45A7D625B88DB400560492 /* MonsterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A7D425B88DB400560492 /* MonsterTableViewCell.swift */; };
+		7B45A7D725B88DB400560492 /* MonsterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45A7D525B88DB400560492 /* MonsterTableViewCell.xib */; };
 		7B5DF92925A71AA800F3276A /* MonsterFarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5DF92825A71AA800F3276A /* MonsterFarmTests.swift */; };
 		7B70B68425B47E2A002C7990 /* MonsterPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B70B68325B47E2A002C7990 /* MonsterPresenterTests.swift */; };
 		7B830B1B25A4B9FF00410AAF /* MonsterFarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B830B1A25A4B9FF00410AAF /* MonsterFarm.swift */; };
@@ -74,6 +81,13 @@
 		7B3E579225A100C0000F7772 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
 		7B45A77025B4BD2E00560492 /* ModelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelScene.swift; sourceTree = "<group>"; };
 		7B45A77525B4BD6400560492 /* BitMaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskCategory.swift; sourceTree = "<group>"; };
+		7B45A79325B86E1000560492 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		7B45A79825B86ED400560492 /* TeamedMonsterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamedMonsterModel.swift; sourceTree = "<group>"; };
+		7B45A7A325B872C100560492 /* MonsterTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTeamViewController.swift; sourceTree = "<group>"; };
+		7B45A7A425B872C100560492 /* MonsterTeamViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonsterTeamViewController.xib; sourceTree = "<group>"; };
+		7B45A7B625B8736E00560492 /* MonsterTeamPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTeamPresenter.swift; sourceTree = "<group>"; };
+		7B45A7D425B88DB400560492 /* MonsterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTableViewCell.swift; sourceTree = "<group>"; };
+		7B45A7D525B88DB400560492 /* MonsterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonsterTableViewCell.xib; sourceTree = "<group>"; };
 		7B5DF92825A71AA800F3276A /* MonsterFarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterFarmTests.swift; sourceTree = "<group>"; };
 		7B70B68325B47E2A002C7990 /* MonsterPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterPresenterTests.swift; sourceTree = "<group>"; };
 		7B830B1A25A4B9FF00410AAF /* MonsterFarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterFarm.swift; sourceTree = "<group>"; };
@@ -119,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				7B06767C25A352B600A9D6C6 /* UIButton+Extension.swift */,
+				7B45A79325B86E1000560492 /* UserDefaults+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -159,6 +174,7 @@
 				7BA5779C25A8C5DD00FF3DA2 /* Router */,
 				7B3E576A25A0FAEC000F7772 /* MapModule */,
 				7BA577A525A8C65000FF3DA2 /* MonsterModule */,
+				7B45A7AA25B872D000560492 /* MonstersTeamModule */,
 				7B3E578A25A0FEF3000F7772 /* Services */,
 				7B06768125A352C000A9D6C6 /* Extensions */,
 				7B3E576225A0EF3B000F7772 /* LaunchScreen.storyboard */,
@@ -243,6 +259,43 @@
 				7B45A77525B4BD6400560492 /* BitMaskCategory.swift */,
 			);
 			path = SceneKitHelpers;
+			sourceTree = "<group>";
+		};
+		7B45A7AA25B872D000560492 /* MonstersTeamModule */ = {
+			isa = PBXGroup;
+			children = (
+				7B45A7AE25B8731400560492 /* Model */,
+				7B45A7B225B8732800560492 /* View */,
+				7B45A7BB25B8737900560492 /* MonsterTeam */,
+			);
+			path = MonstersTeamModule;
+			sourceTree = "<group>";
+		};
+		7B45A7AE25B8731400560492 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B45A79825B86ED400560492 /* TeamedMonsterModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7B45A7B225B8732800560492 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B45A7A325B872C100560492 /* MonsterTeamViewController.swift */,
+				7B45A7D425B88DB400560492 /* MonsterTableViewCell.swift */,
+				7B45A7D525B88DB400560492 /* MonsterTableViewCell.xib */,
+				7B45A7A425B872C100560492 /* MonsterTeamViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B45A7BB25B8737900560492 /* MonsterTeam */ = {
+			isa = PBXGroup;
+			children = (
+				7B45A7B625B8736E00560492 /* MonsterTeamPresenter.swift */,
+			);
+			path = MonsterTeam;
 			sourceTree = "<group>";
 		};
 		7B70B66725B47DBE002C7990 /* MapModuleTests */ = {
@@ -439,6 +492,8 @@
 				7BA577AC25A8C65000FF3DA2 /* MonsterViewController.xib in Resources */,
 				7B3801CC25B46A7000065DEB /* art.scnassets in Resources */,
 				7B3E577325A0FB1C000F7772 /* MapViewController.xib in Resources */,
+				7B45A7A625B872C100560492 /* MonsterTeamViewController.xib in Resources */,
+				7B45A7D725B88DB400560492 /* MonsterTableViewCell.xib in Resources */,
 				7B3E576325A0EF3B000F7772 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,18 +519,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B45A79925B86ED400560492 /* TeamedMonsterModel.swift in Sources */,
 				7BA577A125A8C63100FF3DA2 /* Router.swift in Sources */,
 				7B8EA6BB25A390D6005994D4 /* Monster.swift in Sources */,
 				7BA577AD25A8C65000FF3DA2 /* MonsterViewController.swift in Sources */,
+				7B45A7A525B872C100560492 /* MonsterTeamViewController.swift in Sources */,
 				7B3E577D25A0FE86000F7772 /* LocationManager.swift in Sources */,
 				7B3E572525A0E9E4000F7772 /* MapViewController.swift in Sources */,
 				7B3E572125A0E9E4000F7772 /* AppDelegate.swift in Sources */,
+				7B45A79425B86E1000560492 /* UserDefaults+Extension.swift in Sources */,
 				7B830B2525A4D00000410AAF /* MonsterAnnotation.swift in Sources */,
 				7B45A77625B4BD6400560492 /* BitMaskCategory.swift in Sources */,
 				7B3E579325A100C0000F7772 /* AssemblyBuilder.swift in Sources */,
+				7B45A7B725B8736E00560492 /* MonsterTeamPresenter.swift in Sources */,
 				7B830B1B25A4B9FF00410AAF /* MonsterFarm.swift in Sources */,
 				7BAC3FA825A20F2100623263 /* LocationAuthStatus.swift in Sources */,
 				7BA577AB25A8C65000FF3DA2 /* MonsterPresenter.swift in Sources */,
+				7B45A7D625B88DB400560492 /* MonsterTableViewCell.swift in Sources */,
 				7B45A77125B4BD2E00560492 /* ModelScene.swift in Sources */,
 				7B3E577825A0FC90000F7772 /* MapPresenter.swift in Sources */,
 				7B06767D25A352B600A9D6C6 /* UIButton+Extension.swift in Sources */,

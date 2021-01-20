@@ -14,6 +14,7 @@ protocol AssemblyBuilderProtocol: class {
 
     func createMapModule(router: RouterProtocol) -> MapViewController
     func createMonsterModule(monster: MonsterModelProtocol, router: RouterProtocol) -> MonsterViewController
+    func createMonsterTeamModel(router: RouterProtocol) -> MonsterTeamViewController
 }
 
 //MARK: - AssemblyBuilder class
@@ -33,6 +34,14 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
         
         let view = MonsterViewController()
         let presenter = MonsterPresenter(view: view, monster: monster, router: router)
+        view.presenter = presenter
+        return view
+    }
+    
+    func createMonsterTeamModel(router: RouterProtocol) -> MonsterTeamViewController {
+        
+        let view = MonsterTeamViewController()
+        let presenter = MonsterTeamPresenter(view: view, router: router)
         view.presenter = presenter
         return view
     }

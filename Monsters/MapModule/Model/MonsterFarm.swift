@@ -21,10 +21,16 @@ class MonsterFarm {
         var monsters = [Monster]()
         
         for (imageName, name) in self.monsterNames {
-            let level  = Int.random(in: 1...50)
-            let coordinate = makeCoordinate(from: userCoordinate)
-            let monster = Monster(name: name, imageName: imageName, level: level, coordinate: coordinate)
-            monsters.append(monster)
+            
+            let userDefaults = UserDefaults.standard
+            
+            if (userDefaults.savedMonsters().first(where: { $0.name == name } ) == nil) {
+                let level  = Int.random(in: 1...50)
+                let coordinate = makeCoordinate(from: userCoordinate)
+                let monster = Monster(name: name, imageName: imageName, level: level, coordinate: coordinate)
+                monsters.append(monster)
+            }
+            
         }
         
         return monsters

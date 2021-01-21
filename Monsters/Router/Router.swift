@@ -49,6 +49,7 @@ class Router: RouterProtocol {
     //MARK: - Class methods
     
     //Set initial viewcontroller
+    
     func initialViewController() {
         if let navigationController = navigationController {
             guard let mainViewController = assemblyBuilder?.createMapModule(router: self)  else { return }
@@ -58,6 +59,7 @@ class Router: RouterProtocol {
     }
     
     //Show Monster module
+    
     func showMonsterModule(_ monster: MonsterModelProtocol) {
         if let navigationController = navigationController {
             guard let monsterViewController = assemblyBuilder?.createMonsterModule(monster: monster, router: self)  else { return }
@@ -66,15 +68,19 @@ class Router: RouterProtocol {
         
     }
     
+    //Show Monsters Team module
+    
     func showMonstersTeamModule() {
         
         if let navigationController = navigationController {
             guard let monstersTeamViewController = assemblyBuilder?.createMonsterTeamModel(router: self)  else { return }
+            
             navigationController.pushViewController(monstersTeamViewController, animated: true)
         }
     }
     
     //Back to map view controller
+    
     func popToMapViewController(_ segueCase: SegueCases) {
         
         guard let navigationController = navigationController  else { return }

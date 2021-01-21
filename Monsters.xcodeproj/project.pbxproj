@@ -169,7 +169,7 @@
 		7B3E571F25A0E9E4000F7772 /* Monsters */ = {
 			isa = PBXGroup;
 			children = (
-				7B3E572025A0E9E4000F7772 /* AppDelegate.swift */,
+				7B45A7E225B8A3ED00560492 /* App Lifecycle */,
 				7B26A94F25A3A51000A3FB55 /* Assembly */,
 				7BA5779C25A8C5DD00FF3DA2 /* Router */,
 				7B3E576A25A0FAEC000F7772 /* MapModule */,
@@ -266,7 +266,7 @@
 			children = (
 				7B45A7AE25B8731400560492 /* Model */,
 				7B45A7B225B8732800560492 /* View */,
-				7B45A7BB25B8737900560492 /* MonsterTeam */,
+				7B45A7BB25B8737900560492 /* Presenter */,
 			);
 			path = MonstersTeamModule;
 			sourceTree = "<group>";
@@ -282,20 +282,36 @@
 		7B45A7B225B8732800560492 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7B45A7A325B872C100560492 /* MonsterTeamViewController.swift */,
-				7B45A7D425B88DB400560492 /* MonsterTableViewCell.swift */,
-				7B45A7D525B88DB400560492 /* MonsterTableViewCell.xib */,
+				7B45A7DE25B8A20200560492 /* TableViewCell */,
 				7B45A7A425B872C100560492 /* MonsterTeamViewController.xib */,
+				7B45A7A325B872C100560492 /* MonsterTeamViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		7B45A7BB25B8737900560492 /* MonsterTeam */ = {
+		7B45A7BB25B8737900560492 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
 				7B45A7B625B8736E00560492 /* MonsterTeamPresenter.swift */,
 			);
-			path = MonsterTeam;
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		7B45A7DE25B8A20200560492 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7B45A7D425B88DB400560492 /* MonsterTableViewCell.swift */,
+				7B45A7D525B88DB400560492 /* MonsterTableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		7B45A7E225B8A3ED00560492 /* App Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				7B3E572025A0E9E4000F7772 /* AppDelegate.swift */,
+			);
+			path = "App Lifecycle";
 			sourceTree = "<group>";
 		};
 		7B70B66725B47DBE002C7990 /* MapModuleTests */ = {

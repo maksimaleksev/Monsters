@@ -19,6 +19,7 @@ protocol MapPresenterProtocol: class {
     var router: RouterProtocol? { get set }
     var mapViewIsLoaded: Bool { get set }
     var timer: Timer? { get set }
+    var isTeamEmpty: Bool { get }
     
     init(view: MapViewProtocol, locationManager: LocationManagerProtocol, router: RouterProtocol)
     
@@ -30,7 +31,7 @@ protocol MapPresenterProtocol: class {
     func makeAnnotations() -> [MonsterAnnotation]
     func startTimer()
     func stopTimer()
-    func showMonster(_ monster: MonsterModelProtocol)
+    func showMonster(_ monster: Monster)
     func catchedMonsterHandler(_ monster: MonsterModelProtocol)
     func showMyTeam()
 }
@@ -46,6 +47,9 @@ class MapPresenter: MapPresenterProtocol {
     var monsters: [Monster]!
     var router: RouterProtocol?
     var timer: Timer?
+    var isTeamEmpty: Bool {
+        return UserDefaults.standard.savedMonsters().isEmpty
+    }
     
     //Tells when map on view is loaded
     var mapViewIsLoaded: Bool = false
@@ -173,7 +177,16 @@ class MapPresenter: MapPresenterProtocol {
     
     //Segue to MonsterViewController
     
-    func showMonster(_ monster: MonsterModelProtocol) {
+    func showMonster(_ monster: Monster) {
+        
+        guard let userLocation = userLocation,
+              monster.getDistance(from: userLocation) <= 100
+        
+        else {
+            view?.animateWarningDistanceViewAppear()
+            return
+        }
+        
         stopTimer()
         router?.showMonsterModule(monster)
     }
@@ -187,7 +200,6 @@ class MapPresenter: MapPresenterProtocol {
         monsters.remove(at: index)
         let annotaions = makeAnnotations()
         view?.setAnnotations(annotaions)
-        startTimer()
     }
     
     //Segue to MonstersTeamViewController

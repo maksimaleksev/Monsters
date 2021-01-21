@@ -22,7 +22,7 @@ class MonsterTeamViewController: UIViewController {
     //MARK: - Class properties
     
     var presenter: MonsterTeamPresenterProtocol?
-
+        
     //IB Outlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -32,15 +32,12 @@ class MonsterTeamViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-                
-    }
+            }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2534404705)
-        self.navigationItem.title = "Моя команда"
+        setupNavBar()
+
     }
 
     deinit {
@@ -53,6 +50,13 @@ class MonsterTeamViewController: UIViewController {
         let nib = UINib(nibName: MonsterTableViewCell.reuseId, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: MonsterTableViewCell.reuseId)
         tableView.tableFooterView = UIView()
+    }
+    
+    private func setupNavBar() {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationItem.title = "Моя команда"
     }
 }
 

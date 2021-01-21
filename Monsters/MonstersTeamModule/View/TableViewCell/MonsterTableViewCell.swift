@@ -19,12 +19,6 @@ class MonsterTableViewCell: UITableViewCell {
     @IBOutlet weak var monsterNameLabel: UILabel!
     @IBOutlet weak var monsterLevelLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-    
-    
     public func setupCellFor(monster: MonsterModelProtocol?) {
         
         guard let monster = monster else { return }

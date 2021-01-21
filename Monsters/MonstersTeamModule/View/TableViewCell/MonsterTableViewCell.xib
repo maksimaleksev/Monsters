@@ -39,6 +39,7 @@
                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25344047050000001" colorSpace="calibratedRGB"/>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25344047050000001" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="monsterImageView" destination="jae-Rz-uEJ" id="Zhi-an-lNA"/>
                 <outlet property="monsterLevelLabel" destination="gAl-EG-92f" id="Xn1-DG-QnN"/>

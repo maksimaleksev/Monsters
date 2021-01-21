@@ -9,17 +9,17 @@ import UIKit
 import MapKit
 
 protocol MapViewProtocol: class {
-    var scaleCounter: Int { get set }
+    var scale: Double { get set }
     func show(region: MKCoordinateRegion)
     func showLocationSettingsAlert(title: String, message: String)
     func setAnnotations(_ annotations: [MonsterAnnotation])
+    func animateWarningDistanceViewAppear()
 }
 
 class MapViewController: UIViewController {
     
     var presenter: MapPresenterProtocol!
-    private var deltaScale = 0.025
-    internal var scaleCounter = 0
+    internal var scale: Double = 0.0
     
     //MARK: - IBOutlets
     
@@ -29,6 +29,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var zoomOutButton: UIButton!
     @IBOutlet weak var centerMapOnUserButton: UIButton!
     @IBOutlet weak var showMyTeamButton: UIButton!
+    @IBOutlet weak var warningDistanceView: UIView!
+    @IBOutlet weak var warningDistanceLabel: UILabel!
     
     //MARK: - LifeCycle
     
@@ -36,12 +38,15 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         setupMapView()
         setupAppDelegate()
+        self.warningDistanceView.alpha = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
-        setupButtonsAppereance()
+        showMyTeamButton.isHidden = presenter.isTeamEmpty
+        setupButtonsaAndViewAppereance()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,7 +54,13 @@ class MapViewController: UIViewController {
         scaleButtonsStackView.layer.cornerRadius = 5
         centerMapOnUserButton.layer.cornerRadius = centerMapOnUserButton.frame.width/2
         showMyTeamButton.layer.cornerRadius = 5
+        warningDistanceView.layer.cornerRadius = 5
         centerMapOnUserButton.imageEdgeInsets = .init(top: 11, left: 11, bottom: 11, right: 11)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter.startTimer()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -65,28 +76,39 @@ class MapViewController: UIViewController {
     
     @IBAction func zoomInButtonTapped(_ sender: UIButton) {
         
-        if scaleCounter > 1 {
-            scaleCounter -= 1
-            let scale = Double(scaleCounter) - deltaScale
+        if scale > 0.025 {
+            
+            scale /= 2
             let region = presenter.makeRegion(center: mapView.centerCoordinate, scale: scale)
             mapView.setRegion(region, animated: true)
+            
         } else {
-            scaleCounter = 0
+            
+            scale = 0
             let region = presenter.makeRegion(regionRadius: 300, for: mapView.centerCoordinate)
             mapView.setRegion(region, animated: true)
+            
         }
     }
     
     @IBAction func zoomOutButtonTapped(_ sender: UIButton) {
         
-        let scale = Double(scaleCounter) + deltaScale
-        scaleCounter += 1
+        if scale == 0 {
+            
+            scale = 0.025
+            
+        } else {
+            
+            scale += scale
+            
+        }
+        
         let region = presenter.makeRegion(center: mapView.centerCoordinate, scale: scale)
         mapView.setRegion(region, animated: true)
     }
     
     @IBAction func centerMapOnUserButtonTapped(_ sender: UIButton) {
-        scaleCounter = 0
+        scale = 0
         presenter.showRegion()
     }
     
@@ -97,7 +119,7 @@ class MapViewController: UIViewController {
     //MARK: - Class methods
     
     //Set colors for screen mode
-    private func setupButtonsAppereance() {
+    private func setupButtonsaAndViewAppereance() {
         
         switch self.traitCollection.userInterfaceStyle {
         
@@ -105,10 +127,14 @@ class MapViewController: UIViewController {
             zoomInButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
             zoomOutButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
             centerMapOnUserButton.setButtonColor(textColor: .black, backgroundColor: #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75))
+            warningDistanceView.backgroundColor = #colorLiteral(red: 0.8500000238, green: 0.8500000238, blue: 0.8500000238, alpha: 0.75)
+            warningDistanceLabel.textColor = .black
         case .dark:
             zoomInButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.1540525854, green: 0.1540525854, blue: 0.1540525854, alpha: 0.75))
             zoomOutButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.150000006, green: 0.150000006, blue: 0.150000006, alpha: 0.75))
             centerMapOnUserButton.setButtonColor(textColor: .white, backgroundColor: #colorLiteral(red: 0.150000006, green: 0.150000006, blue: 0.150000006, alpha: 0.75))
+            warningDistanceView.backgroundColor = #colorLiteral(red: 0.150000006, green: 0.150000006, blue: 0.150000006, alpha: 0.75)
+            warningDistanceLabel.textColor = .white
         default:
             break
         }
@@ -134,12 +160,13 @@ class MapViewController: UIViewController {
         let annotations = self.mapView.annotations.filter { $0 !== self.mapView.userLocation }
         self.mapView.removeAnnotations(annotations)
     }
+    
 }
 
 //MARK: - MapViewProtocol
 
 extension MapViewController: MapViewProtocol {
-   
+    
     func setAnnotations(_ annotations: [MonsterAnnotation]) {
         removeAppleMapOverlays()
         mapView.addAnnotations(annotations)
@@ -169,7 +196,38 @@ extension MapViewController: MapViewProtocol {
         present(alertController, animated: true, completion: nil)
     }
     
+    //Animated disapearing distance warning view
+    private func animateWarningDistanceViewDisappear() {
+        
+        UIView.animate(withDuration: 3,
+                       delay: 0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 1,
+                       options: .curveEaseOut,
+                       animations: {
+                        self.view.layoutIfNeeded()
+                        self.warningDistanceView.alpha = 0
+                       },
+                       completion: nil)
+    }
     
+    //Animating appearing distance warning view
+    func animateWarningDistanceViewAppear () {
+        
+        UIView.animate(withDuration: 2,
+                       delay: 0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 1,
+                       options: .curveEaseOut,
+                       animations: { [weak self] in
+                        self?.view.layoutIfNeeded()
+                        self?.warningDistanceView.alpha = 1
+                       },
+                       completion: {[weak self] isComplete in
+                        guard isComplete else { return }
+                        self?.animateWarningDistanceViewDisappear()
+                       })
+    }
 }
 
 //MARK: - MKMapViewDelegate
@@ -201,7 +259,7 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: AppDelegateProtocol {
     
     func appDidBecomeActive() {
-        setupButtonsAppereance()
+        setupButtonsaAndViewAppereance()
     }
     
 }

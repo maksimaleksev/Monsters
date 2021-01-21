@@ -16,6 +16,8 @@
                 <outlet property="scaleButtonsStackView" destination="4Mx-sC-DKo" id="O0W-xK-t35"/>
                 <outlet property="showMyTeamButton" destination="nzN-dR-vBQ" id="8mg-3b-fLe"/>
                 <outlet property="view" destination="iN0-l3-epB" id="LKM-UL-TIC"/>
+                <outlet property="warningDistanceLabel" destination="kAZ-cQ-E5Z" id="Y1l-KO-eXX"/>
+                <outlet property="warningDistanceView" destination="Wzw-G7-gyy" id="vTK-5x-9iJ"/>
                 <outlet property="zoomInButton" destination="bwc-i5-sef" id="N7u-Ii-Mlh"/>
                 <outlet property="zoomOutButton" destination="fhI-Yv-MuF" id="iTJ-rD-9y3"/>
             </connections>
@@ -83,6 +85,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="nfH-ai-hej"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                     <state key="normal" title="Показать мою команду">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -90,15 +93,36 @@
                         <action selector="showMyTeamButtonTapped:" destination="-1" eventType="touchUpInside" id="FvC-9Q-BhV"/>
                     </connections>
                 </button>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzw-G7-gyy">
+                    <rect key="frame" x="24" y="144" width="366" height="60"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы слишком далеко от монстра, подойдите к нему ближе и попробуйте снова" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAZ-cQ-E5Z">
+                            <rect key="frame" x="8" y="8" width="350" height="36"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.58949510979999997" green="0.58949510979999997" blue="0.58949510979999997" alpha="0.25344047050000001" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Mrg-yW-UXB"/>
+                        <constraint firstAttribute="trailing" secondItem="kAZ-cQ-E5Z" secondAttribute="trailing" constant="8" id="T4I-0W-Jdx"/>
+                        <constraint firstItem="kAZ-cQ-E5Z" firstAttribute="top" secondItem="Wzw-G7-gyy" secondAttribute="top" constant="8" id="dSE-qu-Mg7"/>
+                        <constraint firstItem="kAZ-cQ-E5Z" firstAttribute="leading" secondItem="Wzw-G7-gyy" secondAttribute="leading" constant="8" id="dpf-2r-ERl"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="KhK-aV-Gje" secondAttribute="bottom" constant="24" id="A2W-eL-K28"/>
                 <constraint firstItem="nzN-dR-vBQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="Cvg-iW-FPT"/>
+                <constraint firstItem="Wzw-G7-gyy" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="100" id="UMB-mZ-lMR"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vMw-1U-wbh" secondAttribute="trailing" id="XBH-Pa-sVu"/>
                 <constraint firstItem="KhK-aV-Gje" firstAttribute="leading" secondItem="nzN-dR-vBQ" secondAttribute="trailing" constant="24" id="bjr-gU-2hu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Wzw-G7-gyy" secondAttribute="trailing" constant="24" id="crD-lP-tfH"/>
                 <constraint firstAttribute="bottom" secondItem="vMw-1U-wbh" secondAttribute="bottom" id="cuX-ZF-8Y9"/>
+                <constraint firstItem="Wzw-G7-gyy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="fhS-F3-RPN"/>
                 <constraint firstItem="vMw-1U-wbh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jbK-pq-103"/>
                 <constraint firstItem="vMw-1U-wbh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lKl-dK-bP2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4Mx-sC-DKo" secondAttribute="trailing" constant="8" id="nTy-Y0-38m"/>
@@ -106,7 +130,7 @@
                 <constraint firstItem="4Mx-sC-DKo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="oEo-cd-PRc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KhK-aV-Gje" secondAttribute="trailing" constant="8" id="yPl-gu-6wZ"/>
             </constraints>
-            <point key="canvasLocation" x="97" y="110"/>
+            <point key="canvasLocation" x="95.652173913043484" y="109.82142857142857"/>
         </view>
     </objects>
     <resources>

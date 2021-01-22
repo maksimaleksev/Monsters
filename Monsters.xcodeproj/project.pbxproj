@@ -194,7 +194,7 @@
 				7B70B66725B47DBE002C7990 /* MapModuleTests */,
 				7B70B66E25B47DD0002C7990 /* MonsterFarmTests */,
 				7B70B67525B47DEA002C7990 /* MonsterModelTests */,
-				7B45A78025B4C03400560492 /* MonsterModule */,
+				7B45A78025B4C03400560492 /* MonsterModuleTests */,
 				7B3E573925A0E9E5000F7772 /* Info.plist */,
 			);
 			path = MonstersTests;
@@ -246,13 +246,13 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		7B45A78025B4C03400560492 /* MonsterModule */ = {
+		7B45A78025B4C03400560492 /* MonsterModuleTests */ = {
 			isa = PBXGroup;
 			children = (
 				7B70B68325B47E2A002C7990 /* MonsterPresenterTests.swift */,
 				7B45A7F425BB0CAF00560492 /* ModeleSceneTests.swift */,
 			);
-			path = MonsterModule;
+			path = MonsterModuleTests;
 			sourceTree = "<group>";
 		};
 		7B45A78425B4C25F00560492 /* SceneKitHelpers */ = {

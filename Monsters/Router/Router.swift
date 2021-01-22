@@ -19,7 +19,7 @@ protocol RouterProtocol: class {
     
     func initialViewController()
     func showMonsterModule(_ monster: MonsterModelProtocol)
-    func popToMapViewController(_ case: SegueCases)
+    func popToMapViewController(_ segueCase: SegueCases)
     func showMonstersTeamModule()
 }
 

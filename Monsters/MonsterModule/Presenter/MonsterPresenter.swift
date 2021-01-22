@@ -50,7 +50,7 @@ class MonsterPresenter: MonsterPresenterProtocol {
         
     //MARK: - Properties
     weak var view: MonsterViewProtocol?
-    weak var monster: MonsterModelProtocol?
+    var monster: MonsterModelProtocol?
     unowned var router: RouterProtocol
     
     var trackingStatus: String = ""
@@ -146,7 +146,7 @@ class MonsterPresenter: MonsterPresenterProtocol {
         }
     }
     
-    //Set action on action button tapped
+    //Set action on button tapped
     
     func action() {
         

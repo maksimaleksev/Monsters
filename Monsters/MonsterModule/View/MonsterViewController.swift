@@ -211,13 +211,8 @@ extension MonsterViewController {
 
 // MARK: - AR Coaching Overlay
 extension MonsterViewController: ARCoachingOverlayViewDelegate {
-    
-    func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
         
-    }
-    
-    func coachingOverlayViewDidDeactivate(_
-                                            coachingOverlayView: ARCoachingOverlayView) {
+    func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
         self.startApp()
     }
     

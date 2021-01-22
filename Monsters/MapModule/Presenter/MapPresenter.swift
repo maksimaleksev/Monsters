@@ -127,9 +127,9 @@ class MapPresenter: MapPresenterProtocol {
     }
     
     //Making annotation from monster model
-    private func makeAnnotation(from monster: Monster) -> MonsterAnnotation {
-        return MonsterAnnotation(monster: monster)
-    }
+//    private func makeAnnotation(from monster: Monster) -> MonsterAnnotation {
+//        return MonsterAnnotation(monster: monster)
+//    }
     
     //Making mapViewAnnotations in 300 meters from user location
     func makeAnnotations() -> [MonsterAnnotation] {
@@ -154,6 +154,7 @@ class MapPresenter: MapPresenterProtocol {
         }
     }
     
+    //Timer for change moncter position every 5 minutes
     func startTimer() {
         
         if timer == nil {
@@ -195,8 +196,10 @@ class MapPresenter: MapPresenterProtocol {
     
     func catchedMonsterHandler(_ monster: MonsterModelProtocol) {
         
-        let m = monster as! Monster
-        guard let index = monsters.firstIndex(of: m) else { return }
+        guard let m = monster as? Monster,
+              let index = monsters.firstIndex(of: m)
+        else { return }
+        
         monsters.remove(at: index)
         let annotaions = makeAnnotations()
         view?.setAnnotations(annotaions)

@@ -15,6 +15,8 @@ protocol RouterProtocol: class {
     var assemblyBuilder: AssemblyBuilderProtocol? { get }
     var mapPresenter: MapPresenterProtocol? { get set }
     
+    init(navigationController: UINavigationController, assemblyBuilder: AssemblyBuilderProtocol)
+    
     func initialViewController()
     func showMonsterModule(_ monster: MonsterModelProtocol)
     func popToMapViewController(_ case: SegueCases)
@@ -41,7 +43,7 @@ class Router: RouterProtocol {
     
     //MARK: - Init
     
-    init(navigationController: UINavigationController, assemblyBuilder: AssemblyBuilderProtocol) {
+    required init(navigationController: UINavigationController, assemblyBuilder: AssemblyBuilderProtocol) {
         self.navigationController = navigationController
         self.assemblyBuilder = assemblyBuilder
     }
@@ -74,7 +76,6 @@ class Router: RouterProtocol {
         
         if let navigationController = navigationController {
             guard let monstersTeamViewController = assemblyBuilder?.createMonsterTeamModel(router: self)  else { return }
-            
             navigationController.pushViewController(monstersTeamViewController, animated: true)
         }
     }

@@ -27,13 +27,5 @@ class MonsterPresenterTests: XCTestCase {
 
     func testCreateModelScene() {
         
-        let monsterNames:[String:String] = ["altair": "Altair", "amyrose": "Amy Rose", "articuno": "Articuno", "bobby": "Bobby", "bulbasaur": "Bulbasaur", "charizard": "Charizard", "chicky": "Chicky", "connielyn": "Connie Lyn", "dragon": "Dragon", "dragonite": "Dragonite",
-                                                    "freddy": "Freddy", "frizza": "Frizza", "gyrados": "Gyrados", "hulk": "Hulk", "mew-mewtwo": "Mew", "moltres": "Moltres", "mudkipz": "Mudkipz", "pikachu": "Pikachu", "pinky": "Pinky", "piplup": "Piplup", "queen": "Queen", "rabloox": "Rabloox", "robot": "Robot", "scyther": "Scyther", "sonic": "Sonic", "spiderman": "Spiderman", "squirtle": "Squirtle", "stormtrooper": "Storm trooper", "ur-draug": "Ur-Draug", "zapados": "Zapados"]
-        
-        for (key, _) in monsterNames {
-            let modelScene = presenter.createScene(key)
-            XCTAssertNotNil(modelScene)
-            
-        }
     }
 }

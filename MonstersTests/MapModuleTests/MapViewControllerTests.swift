@@ -11,9 +11,13 @@ import MapKit
 @testable import Monsters
 
 class MockPresenter: MapPresenterProtocol {
-    var router: RouterProtocol?
-    
         
+    var isTeamEmpty: Bool {
+        return UserDefaults.standard.savedMonsters().isEmpty
+    }
+       
+    var router: RouterProtocol?
+            
     var timer: Timer?
                
     var mapViewIsLoaded: Bool = true
@@ -24,12 +28,15 @@ class MockPresenter: MapPresenterProtocol {
     
     var locationManager: LocationManagerProtocol?
     
+    var showMyTeamTest: String?
+    
     required init(view: MapViewProtocol, locationManager: LocationManagerProtocol, router: RouterProtocol) {
         self.view = view
         self.locationManager = locationManager
         self.router = router
     }
-    
+
+        
     func showMonster(_ monster: Monster) {
         
     }
@@ -66,7 +73,13 @@ class MockPresenter: MapPresenterProtocol {
         
     }
     
-
+    func catchedMonsterHandler(_ monster: MonsterModelProtocol) {
+        
+    }
+    
+    func showMyTeam() {
+        self.showMyTeamTest = "Foo"
+    }
 
 
 }
@@ -87,23 +100,47 @@ class MapViewControllerTests: XCTestCase {
         presenter = nil
     }
     
+    //Zoom out tests
     func testZoomOut() {
         mapVC.loadView()
         mapVC.zoomOutButtonTapped(UIButton())
-        XCTAssertEqual(mapVC.scaleCounter, 1)
+        XCTAssertEqual(mapVC.scale, 0.025)
+        
+        mapVC.zoomOutButtonTapped(UIButton())
+        XCTAssertEqual(mapVC.scale, 0.05)
     }
     
+    //Zoom In tests
     func testZoomIn() {
         mapVC.loadView()
-        mapVC.scaleCounter = 1
+        mapVC.scale = 0.01
         mapVC.zoomInButtonTapped(UIButton())
-        XCTAssertEqual(mapVC.scaleCounter, 0)
+        XCTAssertEqual(mapVC.scale, 0.0)
         
-        mapVC.scaleCounter = 2
+        mapVC.scale = 1
         mapVC.zoomInButtonTapped(UIButton())
-        XCTAssertEqual(mapVC.scaleCounter, 1)
+        XCTAssertEqual(mapVC.scale, 0.5)
         
     }
+    
+    //showMyTeamButtonTapped Test
+    func testCenterMapOnUserButtonTapped() {
+        mapVC.loadView()
+        mapVC.centerMapOnUserButtonTapped(UIButton())
+        
+        XCTAssertEqual(mapVC.scale, 0)
+    }
+    
+    
+    func testShowMyTeamButtonTapped() {
+        mapVC.loadView()
+        mapVC.showMyTeamButtonTapped(UIButton())
+        
+        let p = presenter as! MockPresenter
+        
+        XCTAssertEqual(p.showMyTeamTest, "Foo")
+    }
+    
     
     func testShowRegion() {
         let centerRegion = CLLocationCoordinate2D(latitude: 21, longitude: 21)
@@ -116,4 +153,6 @@ class MapViewControllerTests: XCTestCase {
         XCTAssertEqual(mapVC.mapView.region.center.latitude.rounded(), centerRegion.latitude.rounded())
         XCTAssertEqual(mapVC.mapView.region.center.longitude.rounded(), centerRegion.longitude.rounded())
     }
+    
+    
 }

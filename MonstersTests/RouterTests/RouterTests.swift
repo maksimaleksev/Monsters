@@ -32,6 +32,8 @@ class RouterTests: XCTestCase {
         router = nil
     }
 
+    //Show Monster module tests
+
     func testShowMonster() {
         
         let monster = Monster(name: "Foo", imageName: "foo", level: 1, coordinate: CLLocationCoordinate2D(latitude: 1, longitude: 1) )
@@ -40,4 +42,11 @@ class RouterTests: XCTestCase {
         XCTAssertTrue(monsterVC is MonsterViewController)
     }
     
+    //Show Monsters Team module
+    
+    func testsShowMonstersTeamModule() {
+        router.showMonstersTeamModule()
+        let monsterTeamVC = navigationController.presentedVC
+        XCTAssertTrue(monsterTeamVC is MonsterTeamViewController)
+    }
 }

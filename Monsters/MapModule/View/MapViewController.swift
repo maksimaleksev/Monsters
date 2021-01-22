@@ -68,9 +68,6 @@ class MapViewController: UIViewController {
         presenter.stopTimer()
     }
     
-    deinit {
-        print("MapViewController deinit")
-    }
     
     //MARK: - IBActions
     

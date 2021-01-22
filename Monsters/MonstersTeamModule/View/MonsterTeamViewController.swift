@@ -32,12 +32,13 @@ class MonsterTeamViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        
             }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavBar()
-
+        
     }
 
     deinit {
@@ -57,6 +58,7 @@ class MonsterTeamViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationItem.title = "Моя команда"
+        
     }
 }
 

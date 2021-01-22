@@ -40,8 +40,9 @@ class MonsterFarmTests: XCTestCase {
     func testMakeMonsters() {
         let userLocation = CLLocationCoordinate2D(latitude: 1, longitude: 1)
         let monsters = monsterFarm.makeMonsters(from: userLocation)
+        let savedMonstersCount = UserDefaults.standard.savedMonsters().count
         
-        XCTAssertEqual(monsters.count, 30)
+        XCTAssertEqual(monsters.count, 30 - savedMonstersCount)
     }
     
 }

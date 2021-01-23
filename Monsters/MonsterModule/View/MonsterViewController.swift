@@ -27,7 +27,7 @@ class MonsterViewController: UIViewController {
     
     var presenter: MonsterPresenterProtocol!
     private let viewsCornerRadius: CGFloat = 5
-    private var numberAtempts: Int = 0
+    var numberAttempts: Int = 0
     lazy var monsterNode: SCNNode? = presenter.createScene()?.node
     
     //MARK: - IBOutlets
@@ -74,14 +74,14 @@ class MonsterViewController: UIViewController {
     }
     
     @IBAction func actionButtonTapped(_ sender: UIButton) {
-        numberAtempts += 1
+        numberAttempts += 1
         
-        if numberAtempts <= 3 {
+        if numberAttempts <= 3 {
             
-            setAttemptImage(numberAtempts)
+            setAttemptImage(numberAttempts)
             presenter.action()
             
-        } else if numberAtempts == 4 {
+        } else if numberAttempts == 4 {
             
             setupAfter(monsterCatched: .Loosed)
                         
@@ -270,7 +270,7 @@ extension MonsterViewController: ARCoachingOverlayViewDelegate {
 
 extension MonsterViewController  {
     
-    private func initARSession() {
+   private func initARSession() {
         
         guard ARWorldTrackingConfiguration.isSupported else {
             print("*** ARConfig: AR World Tracking Not Supported")

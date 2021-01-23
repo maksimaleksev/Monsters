@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 @testable import Monsters
 
-class MockMapView: MapViewProtocol {
+fileprivate class MockMapView: MapViewProtocol {
     
     var scale = 0.0
 
@@ -40,7 +40,7 @@ class MockMapView: MapViewProtocol {
 }
 
 
-class MockRouter: RouterProtocol {
+private class MockRouter: RouterProtocol {
        
     var navigationController: UINavigationController?
     
@@ -77,14 +77,14 @@ class MockRouter: RouterProtocol {
     
 }
 
-class MockLocationManager: LocationManagerProtocol {
+fileprivate class MockLocationManager: LocationManagerProtocol {
     var mapViewPresenter: MapPresenterProtocol?
 }
 
 class MapPresenterTests: XCTestCase {
     
-    var view: MockMapView!
-    var locationManager: MockLocationManager!
+    fileprivate var view: MockMapView!
+    fileprivate var locationManager: MockLocationManager!
     var presenter: MapPresenter!
     
     

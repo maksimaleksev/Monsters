@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-class MonsterFarm {
+final class MonsterFarm {
     
     static let shared = MonsterFarm()
     

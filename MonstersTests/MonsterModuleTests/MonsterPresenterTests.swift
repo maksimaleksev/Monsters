@@ -9,7 +9,7 @@ import XCTest
 import CoreLocation
 @testable import Monsters
 
-class MockMonsterRouter: RouterProtocol {
+fileprivate class MockMonsterRouter: RouterProtocol {
     
     var navigationController: UINavigationController?
     
@@ -48,7 +48,7 @@ class MockMonsterRouter: RouterProtocol {
     
 }
 
-class MockMonsterView: MonsterViewProtocol {
+fileprivate class MockMonsterView: MonsterViewProtocol {
     
     var presenter: MonsterPresenterProtocol!
     var annotationText: String?
@@ -76,7 +76,7 @@ class MockMonsterView: MonsterViewProtocol {
 class MonsterPresenterTests: XCTestCase {
     
     var presenter: MonsterPresenter!
-    var view: MockMonsterView!
+    fileprivate var view: MockMonsterView!
     
     override func setUpWithError() throws {
         view = MockMonsterView()

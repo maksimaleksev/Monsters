@@ -126,11 +126,6 @@ class MapPresenter: MapPresenterProtocol {
         return self.accuracyRegionRadius <= coveredDistance
     }
     
-    //Making annotation from monster model
-//    private func makeAnnotation(from monster: Monster) -> MonsterAnnotation {
-//        return MonsterAnnotation(monster: monster)
-//    }
-    
     //Making mapViewAnnotations in 300 meters from user location
     func makeAnnotations() -> [MonsterAnnotation] {
         

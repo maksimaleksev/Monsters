@@ -28,6 +28,9 @@
 		7B45A7D625B88DB400560492 /* MonsterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A7D425B88DB400560492 /* MonsterTableViewCell.swift */; };
 		7B45A7D725B88DB400560492 /* MonsterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45A7D525B88DB400560492 /* MonsterTableViewCell.xib */; };
 		7B45A7F525BB0CAF00560492 /* ModeleSceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A7F425BB0CAF00560492 /* ModeleSceneTests.swift */; };
+		7B45A80025BC12F300560492 /* MonsterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A7FF25BC12F300560492 /* MonsterViewControllerTests.swift */; };
+		7B45A80525BC49F400560492 /* MonsterTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A80425BC49F400560492 /* MonsterTableViewCellTests.swift */; };
+		7B45A81725BC525800560492 /* MonsterTeamPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45A81625BC525800560492 /* MonsterTeamPresenterTests.swift */; };
 		7B5DF92925A71AA800F3276A /* MonsterFarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5DF92825A71AA800F3276A /* MonsterFarmTests.swift */; };
 		7B70B68425B47E2A002C7990 /* MonsterPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B70B68325B47E2A002C7990 /* MonsterPresenterTests.swift */; };
 		7B830B1B25A4B9FF00410AAF /* MonsterFarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B830B1A25A4B9FF00410AAF /* MonsterFarm.swift */; };
@@ -90,6 +93,9 @@
 		7B45A7D425B88DB400560492 /* MonsterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTableViewCell.swift; sourceTree = "<group>"; };
 		7B45A7D525B88DB400560492 /* MonsterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonsterTableViewCell.xib; sourceTree = "<group>"; };
 		7B45A7F425BB0CAF00560492 /* ModeleSceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeleSceneTests.swift; sourceTree = "<group>"; };
+		7B45A7FF25BC12F300560492 /* MonsterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterViewControllerTests.swift; sourceTree = "<group>"; };
+		7B45A80425BC49F400560492 /* MonsterTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTableViewCellTests.swift; sourceTree = "<group>"; };
+		7B45A81625BC525800560492 /* MonsterTeamPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTeamPresenterTests.swift; sourceTree = "<group>"; };
 		7B5DF92825A71AA800F3276A /* MonsterFarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterFarmTests.swift; sourceTree = "<group>"; };
 		7B70B68325B47E2A002C7990 /* MonsterPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterPresenterTests.swift; sourceTree = "<group>"; };
 		7B830B1A25A4B9FF00410AAF /* MonsterFarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterFarm.swift; sourceTree = "<group>"; };
@@ -195,6 +201,7 @@
 				7B70B66E25B47DD0002C7990 /* MonsterFarmTests */,
 				7B70B67525B47DEA002C7990 /* MonsterModelTests */,
 				7B45A78025B4C03400560492 /* MonsterModuleTests */,
+				7B45A80925BC4A0200560492 /* MonstersTeamModule */,
 				7B3E573925A0E9E5000F7772 /* Info.plist */,
 			);
 			path = MonstersTests;
@@ -251,6 +258,7 @@
 			children = (
 				7B70B68325B47E2A002C7990 /* MonsterPresenterTests.swift */,
 				7B45A7F425BB0CAF00560492 /* ModeleSceneTests.swift */,
+				7B45A7FF25BC12F300560492 /* MonsterViewControllerTests.swift */,
 			);
 			path = MonsterModuleTests;
 			sourceTree = "<group>";
@@ -315,6 +323,15 @@
 				7B3E572025A0E9E4000F7772 /* AppDelegate.swift */,
 			);
 			path = "App Lifecycle";
+			sourceTree = "<group>";
+		};
+		7B45A80925BC4A0200560492 /* MonstersTeamModule */ = {
+			isa = PBXGroup;
+			children = (
+				7B45A80425BC49F400560492 /* MonsterTableViewCellTests.swift */,
+				7B45A81625BC525800560492 /* MonsterTeamPresenterTests.swift */,
+			);
+			path = MonstersTeamModule;
 			sourceTree = "<group>";
 		};
 		7B70B66725B47DBE002C7990 /* MapModuleTests */ = {
@@ -565,8 +582,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B45A81725BC525800560492 /* MonsterTeamPresenterTests.swift in Sources */,
+				7B45A80525BC49F400560492 /* MonsterTableViewCellTests.swift in Sources */,
 				7BA577B225A8C66C00FF3DA2 /* RouterTests.swift in Sources */,
 				7B8EA6CE25A39EF0005994D4 /* MonsterTests.swift in Sources */,
+				7B45A80025BC12F300560492 /* MonsterViewControllerTests.swift in Sources */,
 				7BAC3FAE25A2242200623263 /* MapPresenterTests.swift in Sources */,
 				7B45A7F525BB0CAF00560492 /* ModeleSceneTests.swift in Sources */,
 				7B70B68425B47E2A002C7990 /* MonsterPresenterTests.swift in Sources */,

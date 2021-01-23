@@ -27,19 +27,17 @@ import Foundation
         self.level = level
     }
     
-    
-    func encode(with coder: NSCoder) {
-        coder.encode(name, forKey: MonsterCodingKeys.monsterName.rawValue)
-        coder.encode(imageName, forKey: MonsterCodingKeys.monsterImageName.rawValue)
-        coder.encode(level, forKey: MonsterCodingKeys.monsterLevel.rawValue)
-    }
-    
     required init?(coder: NSCoder) {
         name = coder.decodeObject(forKey: MonsterCodingKeys.monsterName.rawValue) as? String ?? ""
         imageName = coder.decodeObject(forKey: MonsterCodingKeys.monsterImageName.rawValue) as? String ?? ""
         level = coder.decodeInteger(forKey: MonsterCodingKeys.monsterLevel.rawValue)
         
     }
-
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: MonsterCodingKeys.monsterName.rawValue)
+        coder.encode(imageName, forKey: MonsterCodingKeys.monsterImageName.rawValue)
+        coder.encode(level, forKey: MonsterCodingKeys.monsterLevel.rawValue)
+    }
     
 }

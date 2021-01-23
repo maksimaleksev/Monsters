@@ -6,5 +6,6 @@ Graduation project for course IOS developer level 2
 
 
 
-User can catch monsters in AR, on map near himself
+User can catch monsters in AR, on map near himself.
+
 Used stack: MVP, MapKit, ARKit, CoreLocation, UserDefaults
